@@ -8,7 +8,11 @@ export default {
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
       },
+      colors: {
+        'mine-shaft-950': '#212121',
+        'shark-950':'#2a2a2a'
+      }
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms'),],
 }

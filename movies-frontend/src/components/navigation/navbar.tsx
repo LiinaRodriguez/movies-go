@@ -1,4 +1,4 @@
-
+import {Link} from 'react-router-dom'
 const links = [
   { name: 'Home', href: '/' },
   { name: 'Movies', href: '/movies' },
@@ -8,13 +8,13 @@ const links = [
 
 const linksItems = links.map((link) => {
   return (
-      <li className="" key={link.name}><a
+      <li className="" key={link.name}><Link
           
-          href={link.href}
+          to={link.href}
           className="block py-2 px-3 font-sans text-white rounded md:p-0 "
       >
           <p>{link.name}</p>
-    </a>
+    </Link>
     </li>
   )
 })
@@ -30,7 +30,7 @@ function NavLinks() {
             <span className="self-center text-2xl font-mono font-semibold whitespace-nowrap dark:text-white">Movies</span>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button type="button" className="text-white  focus:outline-none  font-medium rounded-3xl hover:bg-white hover:text-black text-sm px-4 mx-2  py-3 text-center bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-15">Log In</button>
+            <Link to='login' className="text-white  focus:outline-none  font-medium rounded-3xl hover:bg-white hover:text-black text-sm px-4 mx-2  py-3 text-center bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-15">Log In</Link>
             <button type="button" className="text-white  focus:outline-none  font-medium rounded-3xl hover:bg-white hover:text-black text-sm px-4 py-2 text-center mx-1 bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-15">Sign Up</button>
             <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
               <span className="sr-only">Open main menu</span>
