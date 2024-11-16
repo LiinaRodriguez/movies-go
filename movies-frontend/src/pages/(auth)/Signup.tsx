@@ -1,13 +1,37 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import { registerUser } from "../../api/authApi";
 
 
 const Signup = ({ toggleForm }: { toggleForm: () => void }) => {
   const navigate = useNavigate();
+  const [name, setName] = useState('')
+  const [lastname, setLastname] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Lógica de autenticación aquí (si tienes alguna)
+
+    try {
+      const user = {
+        name,
+        lastname,
+        email,
+        password,
+      };
+      const response = await registerUser(user)
+      console.log('User registered', response)
+
+    } catch (error) {
+      setError('An error has ocurred during registration')
+      console.log('Error', error)
+    }
+    
+    
     navigate('/explore'); // Redirige al usuario al dashboard tras iniciar sesión
   };
 
@@ -26,31 +50,32 @@ const Signup = ({ toggleForm }: { toggleForm: () => void }) => {
           onSubmit={handleSubmit}
           className="mx-auto mb-0 mt-4 max-w-md space-y-4"
         >
-<div className="flex space-x-4">
-  <div className="w-1/2">
-    <label htmlFor="Name" className="sr-only">Name</label>
-    <div className="relative">
-      <input
-        name="Name"
-        id="Name"
-        type="text"
-        title="Name"
-        className="w-full rounded-lg border-gray-200 bg-[#F0EDFF] p-3 pe-12 text-sm shadow"
-        placeholder="First Name"
-        required
-      />
-      <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-      <svg xmlns="http://www.w3.org/2000/svg"
-      className="size-4 text-gray-400"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
-      </span>
-    </div>
-  </div>
+        <div className="flex space-x-4">
+          <div className="w-1/2">
+            <label htmlFor="Name" className="sr-only">Name</label>
+            <div className="relative">
+              <input
+                name="Name"
+                id="Name"
+                type="text"
+                title="Name"
+                className="w-full rounded-lg border-gray-200 bg-[#F0EDFF] p-3 pe-12 text-sm shadow"
+                placeholder="First Name"
+                onChange={(e) => setName(e.target.value)}        
+                required
+              />
+              <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+              <svg xmlns="http://www.w3.org/2000/svg"
+              className="size-4 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>
+              </span>
+            </div>
+          </div>
 
-  <div className="w-1/2">
-    <label htmlFor="Lastname" className="sr-only">Last Name</label>
+    <div className="w-1/2">
+      <label htmlFor="Lastname" className="sr-only">Last Name</label>
     <div className="relative">
       <input
         name="Lastname"
@@ -59,6 +84,7 @@ const Signup = ({ toggleForm }: { toggleForm: () => void }) => {
         title="Lastname"
         className="w-full rounded-lg border-gray-200 bg-[#F0EDFF] p-3 pe-12 text-sm shadow"
         placeholder="Last Name"
+        onChange={(e) => setLastname(e.target.value)}          
         required
       />
       <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -83,7 +109,8 @@ const Signup = ({ toggleForm }: { toggleForm: () => void }) => {
                 type="email"
                 title="Email"
                 className="w-full rounded-lg border-gray-200 bg-[#F0EDFF] p-3 pe-12 text-sm shadow"
-                placeholder="Enter email"              
+                placeholder="Enter email"
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -116,7 +143,7 @@ const Signup = ({ toggleForm }: { toggleForm: () => void }) => {
                 type={showPassword ? "text" : "password"} 
                 className="w-full rounded-lg border-gray-200 bg-[#F0EDFF] p-3 pe-12 text-sm shadow"
                 placeholder="Enter password"
-               
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
               <span
@@ -199,6 +226,7 @@ const Signup = ({ toggleForm }: { toggleForm: () => void }) => {
             >
               Sign Up
             </button>
+            {error && <p>{error}</p>}
           </div>
         </form>
         
