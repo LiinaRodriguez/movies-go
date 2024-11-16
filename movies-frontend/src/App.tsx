@@ -1,9 +1,10 @@
 import Home from './pages/Home'
-import Login from './pages/(auth)/Login'
+import Login from './pages/Login'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Explore from './pages/Explore';
 
-function App() {
+
+const App = (): JSX.Element => {
 
   return (
     <>

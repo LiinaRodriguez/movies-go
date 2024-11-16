@@ -1,26 +1,32 @@
-import Footer from '../components/Footer'
-import  Navbar from  './../components/navigation/navbar'
+import Signup from "./(auth)/Signup";
+import Login from "./(auth)/Login";
+import { useState } from "react";
 
-export default function Home() {
+const Home = (): JSX.Element => {
+  const [isLogin, setIsLogin] = useState(true);
+  const toggleForm = () => setIsLogin(!isLogin);
+
   return (
-    <>
-    <div className=" min-h-screen bg-[repeating-linear-gradient(to_right,#0a171f_0px,#0a171f_80px,#101d25_80px,#101d25_160px)] text-white flex flex-col justify-center items-center">
-        <Navbar />
-        <div className="flex-grow flex flex-col justify-center items-center px-52 w-full mt-20">
-          <img src='/main.png' width={400} />
-          <p className="font-semibold text-center text-5xl font-serif">
-            Rate your favorite <span className=" font-bold">movies</span> & 
-          </p>
-          <p className="font-semibold text-center text-5xl font-sans">discover new 
-            <span className=""> recommendations</span>  
-            <span className=" font-bold"> tailored just for you!</span>
-          </p>
-          <button className="rounded-3xl mt-4 px-6 py-2 bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-15">
-            Sign Up now
-          </button>
+    <div className="relative h-screen">
+      {/* Background */}
+      <div className="absolute inset-0 bg-[url('./background-login-page.jpg')] bg-cover bg-center"></div>
+      <div className="absolute inset-0 bg-gradient-to-l from-black from-opacity-80 via-opacity-30 via-black/40 to-transparent"></div>
+      
+      {/* Content */}
+      <div className="relative z-10 flex items-center justify-center h-full px-10">
+        {/* Form container */}
+        <div className="w-2/3"></div>
+        <div className="w-1/3 max-w-md">
+          {/* Transition simple entre los formularios */}
+          {isLogin ? (
+            <Login toggleForm={toggleForm} />
+          ) : (
+            <Signup toggleForm={toggleForm} />
+          )}
         </div>
-        <Footer />
-      </div>  
-    </>
-  )
-}
+      </div>
+    </div>
+  );
+};
+
+export default Home;

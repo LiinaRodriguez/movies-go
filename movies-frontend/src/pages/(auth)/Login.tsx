@@ -1,90 +1,160 @@
-import { useNavigate } from 'react-router-dom';
+import  { useState } from "react";
 
-export default function Login() {
-  const navigate = useNavigate();
+const Login = ({ toggleForm }: { toggleForm: () => void }) => {
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Lógica de autenticación aquí (si tienes alguna)
-    navigate('/explore'); // Redirige al usuario al dashboard tras iniciar sesión
-  };
+  const handleSubmit = () => {
+    // autenticación 
+  }
+
+
+  const [showPassword, setShowPassword] = useState(false); 
 
 
   return (
-    <>
-      <div className="h-full bg-[repeating-linear-gradient(to_right,#0a171f_0px,#0a171f_80px,#101d25_80px,#101d25_160px)] flex min-h-full flex-1  flex-col justify-center px-2 py-16 lg:px-8">
-        <div className="bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-15 rounded-xl border border-gray-100 py-12 mx-60 ">
-        <div className="mx-auto w-full  max-w-sm">
-          <img
-            alt="Movies Inc"
-            src="/icon-popcorn.png"
-            className="mx-auto h-10 w-auto"
-          />
-          <h2 className="mt-5 text-center text-2xl/9 font-bold tracking-tight text-gray-200">
-            Sign in to your account
-          </h2>
+    <section className="w-full rounded-lg mx-auto my-4 p-4 flex flex-wrap items-stretch ">
+      <div className="w-full px-4 rounded-3xl bg-gray-100 py-12 sm:px-6 sm:py-16 lg:w-full lg:px-8 lg:py-8 backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
+        <div className="mx-auto flex flex-col items-center max-w-lg text-center">
+          <h2></h2>
+          <p className="text-gray-100 text-4xl font-medium font-serif">Welcome back 👋</p>
         </div>
-
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="email" className="block text-sm/6 font-medium text-gray-200">
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm/6"
-                />
-              </div>
+        <form
+          onSubmit={handleSubmit}
+          className="mx-auto mb-0 mt-4 max-w-md space-y-4"
+        >
+          <div>
+            <label htmlFor="email" className="sr-only">
+              Email
+            </label>
+            <div className="relative">
+              <input
+                name="email"
+                id="email"
+                type="email"
+                title="Email"
+                className="w-full rounded-lg border-gray-200 bg-[#F0EDFF] p-3 pe-12 text-sm shadow"
+                placeholder="Enter email"              
+                required
+              />
+              <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="size-4 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                  />
+                </svg>
+              </span>
             </div>
+          </div>
+          <div>
+            <label htmlFor="password" className="sr-only">
+              Password
+            </label>
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm/6 font-medium text-gray-200">
-                  Password
-                </label>
-                <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Forgot password?
-                  </a>
-                </div>
-              </div>
-              <div className="mt-2">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  autoComplete="current-password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-gray-200 focus-visible:outline hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-15 rounded-xl border border-gray-100"
+            <div className="relative">
+              <input
+                name="password"
+                id="PasswordInput"
+                type={showPassword ? "text" : "password"} 
+                className="w-full rounded-lg border-gray-200 bg-[#F0EDFF] p-3 pe-12 text-sm shadow"
+                placeholder="Enter password"
+               
+                required
+              />
+              <span
+                className="absolute inset-y-0 end-0 grid place-content-center px-4 cursor-pointer"
+                onClick={() => setShowPassword(!showPassword)}
               >
-                Sign in
-              </button>
+                {showPassword ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="size-4 text-gray-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="size-4 text-gray-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M13.875 18.825A10.956 10.956 0 0012 19c-4.478 0-8.268-2.943-9.542-7C3.732 7.943 7.523 5 12 5c1.106 0 2.154.142 3.146.402"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 10.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
+                  </svg>
+                )}
+              </span>
             </div>
-          </form>
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-sm">
+            <a className="text-blue-500 hover:textblue-700 cursor-pointer hover:underline">Forgot Password</a>
+            </p>
 
-          <p className="mt-10 text-center text-sm/6 text-gray-500">
-            Not a member?{' '}
-            <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+            <p className="text-sm italic text-gray-300">
+            No account?{" "}
+            <a
+              className="text-blue-500 hover:text-blue-700 cursor-pointer hover:underline"
+              onClick={toggleForm}
+            >
               Sign Up
             </a>
           </p>
+
+            
           </div>
+          <div className="flex items-center justify-between">
+            <button
+              type="submit"
+              className="inline-block m-auto rounded-lg bg-blue-500 hover:bg-blue-600 px-3 py-2  text-sm font-medium text-white"
+            >
+              Login
+            </button>
           </div>
+        </form>
+       
       </div>
-    </>
-  )
+     
+    </section>
+  );
 }
+
+export default Login;
