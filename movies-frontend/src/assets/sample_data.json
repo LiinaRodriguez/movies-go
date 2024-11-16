@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "cover": "https://m.media-amazon.com/images/M/MV5BYWQ3ZTg1ZDUtZjc2My00NTQ4LTk1NDctNjkxZGI2ZTM2MDlmXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+    "title": "Dune",
+    "year": 2021,
+    "genre": ["Adventure", "Sci-Fi"],
+    "rating": 8.0,
+    "duration": "2h 35m",
+    "description": "Feature adaptation of Frank Herbert's science fiction novel about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
+    "director": "Denis Villeneuve",
+    "cast": [
+      "Timothée Chalamet",
+      "Rebecca Ferguson",
+      "Oscar Isaac"
+    ],
+    "link": "https://www.imdb.com/title/tt1160419/"
+  },
+  {
+    "id": 2,
+    "cover": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwZi00MjQxLWFmNzUtN2QxN2FlZTcwNTJkXkEyXkFqcGdeQXVyNzg5OTk2OA@@._V1_.jpg",
+    "title": "The Godfather",
+    "year": 1972,
+    "genre": ["Crime", "Drama"],
+    "rating": 9.2,
+    "duration": "2h 55m",
+    "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "director": "Francis Ford Coppola",
+    "cast": [
+      "Marlon Brando",
+      "Al Pacino",
+      "James Caan"
+    ],
+    "link": "https://www.imdb.com/title/tt0068646/"
+  },
+  {
+    "id": 3,
+    "cover": "https://m.media-amazon.com/images/M/MV5BMTk4MzU4ODg3Ml5BMl5BanBnXkFtZTgwMzY1NzY3NjM@._V1_.jpg",
+    "title": "Interstellar",
+    "year": 2014,
+    "genre": ["Adventure", "Drama", "Sci-Fi"],
+    "rating": 8.6,
+    "duration": "2h 49m",
+    "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "director": "Christopher Nolan",
+    "cast": [
+      "Matthew McConaughey",
+      "Anne Hathaway",
+      "Jessica Chastain"
+    ],
+    "link": "https://www.imdb.com/title/tt0816692/"
+  }
+]
