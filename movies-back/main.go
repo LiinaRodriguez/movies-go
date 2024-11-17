@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/liinarodriguez/movies-go/movies-back/models"
+	"github.com/rs/cors"
 	"log"
 	"net/http"
 	"os"
@@ -35,6 +36,15 @@ func main() {
 
 	// Configurar el router
 	router := mux.NewRouter()
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:5173"}, // frontend React
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE"},
+		AllowedHeaders:   []string{"Origin", "Content-Type", "Authorization"},
+		AllowCredentials: true,
+	})
+
+	// Añadir CORS como middleware al router
+	handler := c.Handler(router)
 
 	// Rutas de autenticación
 	router.HandleFunc("/register", authController.Register).Methods("POST")
@@ -60,5 +70,5 @@ func main() {
 		port = "3001"
 	}
 	fmt.Println("Servidor iniciado en http://localhost:" + port)
-	log.Fatal(http.ListenAndServe(":"+port, router))
+	log.Fatal(http.ListenAndServe(":"+port, handler))
 }
