@@ -1,5 +1,5 @@
-import Signup from "./(auth)/Signup";
-import Login from "./(auth)/Login";
+import Login from '../pages/auth/Login'
+import Signup from './auth/Signup';
 import { useState } from "react";
 
 const Home = (): JSX.Element => {
