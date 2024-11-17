@@ -51,6 +51,13 @@ func (c *OmdbClient) GetMovieRating(imdbID string) (float64, error) {
 				return 0, fmt.Errorf("Error parsing IMDb rating: %w", err)
 			}
 			return score, nil
+		} else if rating.Source == "Rotten Tomatoes" {
+			var score float64
+			_, err := fmt.Sscanf(rating.Value, "%f", &score)
+			if err != nil {
+				return 0, fmt.Errorf("Error parsing Rotten Tomatoes rating: %w", err)
+			}
+			return score, nil
 		}
 	}
 

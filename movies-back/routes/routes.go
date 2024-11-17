@@ -8,12 +8,13 @@ import (
 	"github.com/liinarodriguez/movies-go/movies-back/middleware"
 	"github.com/liinarodriguez/movies-go/movies-back/repositories"
 	"github.com/liinarodriguez/movies-go/movies-back/services"
+	"github.com/liinarodriguez/movies-go/movies-back/utils"
 	"net/http"
 )
 
 func RegisterRoutes(router *mux.Router) {
-	apiKey_tmdb := "6eb8b63cd876fdf9e24de7e09b72b008"
-	apiKey_omdb := "d3ab8683"
+	apiKey_tmdb := utils.GetEnv("TMDB_API_KEY")
+	apiKey_omdb := utils.GetEnv("OMDB_API_KEY")
 	omdbClient := api.NewOmdbClient(apiKey_omdb)
 	tmdbClient := api.NewTmdbClient(apiKey_tmdb, omdbClient)
 	movieService := services.NewMovieService(repositories.NewMovieRepository(config.DB), *omdbClient, tmdbClient)

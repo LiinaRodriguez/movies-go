@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="890d165f-8570-4705-89f0-debf82a34593" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/omdbClient.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/omdbClient.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tmdbClient.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/tmdbClient.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/moviesService.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/moviesService.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../movies-frontend/src/app/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/app/Layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../movies-frontend/src/pages/Explore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/pages/Explore.tsx" afterDir="false" />
     </list>
