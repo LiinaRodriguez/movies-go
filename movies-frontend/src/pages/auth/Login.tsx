@@ -21,12 +21,14 @@ const Login = ({ toggleForm }: { toggleForm: () => void }) => {
 
       const response = await logUser(user)
       console.log('User logged')
-      console.log('response', response)
+      localStorage.setItem('token', response.data.token)
+      console.log(localStorage.getItem('token'))
       navigate('/explore');
     } catch (error) {
       setError('An error has ocurred during log')
       console.log("Error", error)
     }
+    
   }
 
   return (
