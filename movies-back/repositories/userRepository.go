@@ -1,27 +1,29 @@
 package repositories
 
 import (
-	"github.com/liinarodriguez/movies-go/movies-back/config"
 	"github.com/liinarodriguez/movies-go/movies-back/models"
+	"gorm.io/gorm"
 )
 
 type UserRepository interface {
-	FindByUsername(username string) (*models.User, error)
+	FindByEmail(email string) (*models.User, error)
 	CreateUser(user *models.User) error
 }
 
-type userRepository struct{}
-
-func NewUserRepository() UserRepository {
-	return &userRepository{}
+type userRepository struct {
+	db *gorm.DB
 }
 
-func (r *userRepository) FindByUsername(email string) (*models.User, error) {
+func NewUserRepository(db *gorm.DB) UserRepository {
+	return &userRepository{db}
+}
+
+func (r *userRepository) FindByEmail(email string) (*models.User, error) {
 	var user models.User
-	result := config.DB.Where("email = ?", email).First(&user)
+	result := r.db.Where("email = ?", email).First(&user)
 	return &user, result.Error
 }
 
 func (r *userRepository) CreateUser(user *models.User) error {
-	return config.DB.Create(user).Error
+	return r.db.Create(user).Error
 }

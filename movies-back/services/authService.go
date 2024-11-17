@@ -25,7 +25,7 @@ func NewAuthService(userRepo repositories.UserRepository) AuthService {
 }
 
 func (s *authService) Login(username, password string) (string, error) {
-	user, err := s.userRepository.FindByUsername(username)
+	user, err := s.userRepository.FindByEmail(username)
 	if err != nil {
 		return "", errors.New("usuario no encontrado")
 	}
