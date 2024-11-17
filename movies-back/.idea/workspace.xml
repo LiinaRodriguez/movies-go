@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="890d165f-8570-4705-89f0-debf82a34593" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/authMiddleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/authMiddleware.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/api/apiConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/api/apiConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/api/authApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/api/authApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/api/axiosClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/api/axiosClient.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/components/navigation/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/components/navigation/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/pages/(auth)/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/pages/(auth)/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/pages/(auth)/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/pages/(auth)/Signup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/authController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/authController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/pages/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/pages/auth/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

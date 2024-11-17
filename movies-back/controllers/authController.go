@@ -29,9 +29,13 @@ func (c *AuthController) Login(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(err.Error()))
 		return
 	}
-
+	response := map[string]interface{}{
+		"data": map[string]string{
+			"token": token,
+		},
+	}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]string{"token": token})
+	json.NewEncoder(w).Encode(response)
 }
 
 func (c *AuthController) Register(w http.ResponseWriter, r *http.Request) {
