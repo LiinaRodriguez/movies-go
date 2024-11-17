@@ -42,10 +42,35 @@ type TmdbClient interface {
 
 type tmdbClient struct {
 	apiKey string
-	omdb   *omdbClient // Referencia al cliente OMDB
+	omdb   *OmdbClient // Referencia al cliente OMDB
 }
 
-func NewTmdbClient(apiKey string, omdbClient *omdbClient) *tmdbClient {
+func (c *tmdbClient) GetExternalId(movieId string) (string, error) {
+	url := fmt.Sprintf("https://api.themoviedb.org/3/movie/%s/external_ids?api_key=%s", movieId, c.apiKey)
+
+	response, err := http.Get(url)
+	if err != nil {
+		return "", fmt.Errorf("error fetching media: %w", err)
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("unexpected status code: %d", response.StatusCode)
+	}
+
+	var result ExternalId
+	if err := json.NewDecoder(response.Body).Decode(&result); err != nil {
+		return "", fmt.Errorf("error decoding response: %w", err)
+	}
+
+	if result.ImdbID == "" {
+		return "", fmt.Errorf("no id found for : %s", movieId)
+	}
+
+	return result.ImdbID, nil
+}
+
+func NewTmdbClient(apiKey string, omdbClient *OmdbClient) *tmdbClient {
 	return &tmdbClient{apiKey: apiKey, omdb: omdbClient}
 }
 
@@ -109,29 +134,4 @@ func (c *tmdbClient) FetchMedia(mediaType string) ([]Media, error) {
 	}
 
 	return mediaResults, nil
-}
-
-func (c *tmdbClient) GetExternalId(movieId string) (string, error) {
-	url := fmt.Sprintf("https://api.themoviedb.org/3/movie/%s/external_ids?api_key=%s", movieId, c.apiKey)
-
-	response, err := http.Get(url)
-	if err != nil {
-		return "", fmt.Errorf("error fetching media: %w", err)
-	}
-	defer response.Body.Close()
-
-	if response.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("unexpected status code: %d", response.StatusCode)
-	}
-
-	var result ExternalId
-	if err := json.NewDecoder(response.Body).Decode(&result); err != nil {
-		return "", fmt.Errorf("error decoding response: %w", err)
-	}
-
-	if result.ImdbID == "" {
-		return "", fmt.Errorf("no id found for : %s", movieId)
-	}
-
-	return result.ImdbID, nil
 }

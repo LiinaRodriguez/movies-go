@@ -6,7 +6,7 @@ import (
 )
 
 type MovieService interface {
-	GetMedia(mediaType string) ([]api.TmdbMedia, error)
+	GetMedia(mediaType string) ([]api.Media, error)
 	//GetRecommendedMovies(userID uint) ([]models.Movies, error)
 	//GetMovieDetails(movieID string) (models.Movies, error)
 }
@@ -17,10 +17,10 @@ type movieService struct {
 	tmdbClient api.TmdbClient
 }
 
-func NewMovieService(movieRepo repositories.MovieRepository, omdbClient api.OmdbClient, tmdbClient api.TmdbClient) MovieService {
+func NewMovieService(movieRepo repositories.MovieRepository, omdbClient api.OmdbClient, tmdbClient api.TmdbClient) *movieService {
 	return &movieService{movieRepo, omdbClient, tmdbClient}
 }
 
-func (s *movieService) GetMedia(mediaType string) ([]api.TmdbMedia, error) {
+func (s *movieService) GetMedia(mediaType string) ([]api.Media, error) {
 	return s.tmdbClient.FetchMedia(mediaType)
 }

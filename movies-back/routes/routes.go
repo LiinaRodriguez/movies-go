@@ -13,10 +13,10 @@ import (
 
 func RegisterRoutes(router *mux.Router) {
 	apiKey_tmdb := "6eb8b63cd876fdf9e24de7e09b72b008"
-	apiKey_omdb := "b9b3d7b7"
+	apiKey_omdb := "d3ab8683"
 	omdbClient := api.NewOmdbClient(apiKey_omdb)
 	tmdbClient := api.NewTmdbClient(apiKey_tmdb, omdbClient)
-	movieService := services.NewMovieService(repositories.NewMovieRepository(config.DB), omdbClient, tmdbClient)
+	movieService := services.NewMovieService(repositories.NewMovieRepository(config.DB), *omdbClient, tmdbClient)
 	movieController := controllers.NewMovieController(movieService, tmdbClient)
 
 	userRepo := repositories.NewUserRepository(config.DB)

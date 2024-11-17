@@ -6,12 +6,12 @@ import (
 	"net/http"
 )
 
-type omdbClient struct {
+type OmdbClient struct {
 	apiKey string
 }
 
-func NewOmdbClient(apiKey string) *omdbClient {
-	return &omdbClient{apiKey: apiKey}
+func NewOmdbClient(apiKey string) *OmdbClient {
+	return &OmdbClient{apiKey: apiKey}
 }
 
 type OMDBResponse struct {
@@ -24,7 +24,7 @@ type Rating struct {
 	Value  string `json:"Value"`
 }
 
-func (c *omdbClient) GetMovieRating(imdbID string) (float64, error) {
+func (c *OmdbClient) GetMovieRating(imdbID string) (float64, error) {
 	url := fmt.Sprintf("http://www.omdbapi.com/?i=%s&apikey=%s", imdbID, c.apiKey)
 
 	response, err := http.Get(url)
