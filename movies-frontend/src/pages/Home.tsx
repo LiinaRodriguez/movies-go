@@ -1,5 +1,6 @@
 import Login from '../pages/auth/Login'
 import Signup from './auth/Signup';
+
 import { useState } from "react";
 
 const Home = (): JSX.Element => {
@@ -7,6 +8,8 @@ const Home = (): JSX.Element => {
   const toggleForm = () => setIsLogin(!isLogin);
 
   return (
+    <>
+   
     <div className="relative h-screen">
       {/* Background */}
       <div className="absolute inset-0 bg-[url('./background-login-page.jpg')] bg-cover bg-center"></div>
@@ -25,7 +28,8 @@ const Home = (): JSX.Element => {
           )}
         </div>
       </div>
-    </div>
+      </div>
+      </>
   );
 };
 
