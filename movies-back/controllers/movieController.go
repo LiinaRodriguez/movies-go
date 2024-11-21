@@ -3,18 +3,16 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/liinarodriguez/movies-go/movies-back/api"
 	"github.com/liinarodriguez/movies-go/movies-back/services"
 	"net/http"
 )
 
 type MovieController struct {
 	movieService services.MovieService
-	tmdbCLient   api.TmdbClient
 }
 
-func NewMovieController(movieService services.MovieService, tmdbClient api.TmdbClient) *MovieController {
-	return &MovieController{movieService, tmdbClient}
+func NewMovieController(movieService services.MovieService) *MovieController {
+	return &MovieController{movieService}
 }
 
 func (c *MovieController) GetMedia(w http.ResponseWriter, r *http.Request) {
@@ -33,9 +31,16 @@ func (c *MovieController) GetMedia(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(json.NewEncoder(w).Encode(movies))
 }
 
-func (c *MovieController) GetRecommendations(w http.ResponseWriter, r *http.Request) {
-	//recibir id de usuario
-	//llamar al metodo  RecommendFromMatrix(userId),el metodo retorna un arreglo de string con los Id de las peliculas
-	//llamar a la otra api para recibir la informacion completa de cada pelicula
-	//retornar la informacion obtenida de la otra api
+func (c *MovieController) FindMovie(w http.ResponseWriter, r *http.Request) {
+	movieName := r.URL.Query().Get("movietitle")
+	movies, err := c.movieService.FindMovie(movieName)
+
+	if err != nil {
+		http.Error(w, "Error fetching media", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(movies)
+	fmt.Println(json.NewEncoder(w).Encode(movies))
 }
