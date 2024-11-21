@@ -18,15 +18,19 @@ func RegisterRoutes(router *mux.Router) {
 	omdbClient := api.NewOmdbClient(apiKey_omdb)
 	tmdbClient := api.NewTmdbClient(apiKey_tmdb, omdbClient)
 	movieService := services.NewMovieService(repositories.NewMovieRepository(config.DB), *omdbClient, tmdbClient)
-	movieController := controllers.NewMovieController(movieService, tmdbClient)
+	userService := services.NewUserService(repositories.NewUserRepository(config.DB), movieService)
 
+	movieController := controllers.NewMovieController(movieService)
+	userController := controllers.NewUserController(userService)
 	userRepo := repositories.NewUserRepository(config.DB)
 	authService := services.NewAuthService(userRepo)
 	authController := controllers.NewAuthController(authService)
 
 	// Ruta para obtener todas las películas
 	router.HandleFunc("/movies", movieController.GetMedia).Methods("GET")
-
+	router.HandleFunc("/find", movieController.FindMovie).Methods("GET")
+	router.HandleFunc("/foryou", movieController.GetRecommendations).Methods("POST")
+	router.HandleFunc("/favorites", userController.GetFavorites).Methods("POST")
 	// Rutas de autenticación
 	router.HandleFunc("/register", authController.Register).Methods("POST")
 	router.HandleFunc("/login", authController.Login).Methods("POST")

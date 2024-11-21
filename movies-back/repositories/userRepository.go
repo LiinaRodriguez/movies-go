@@ -8,6 +8,7 @@ import (
 type UserRepository interface {
 	FindByEmail(email string) (*models.User, error)
 	CreateUser(user *models.User) error
+	FindFavoritesByUserId(userid int) ([]models.Favorites, error)
 }
 
 type userRepository struct {
@@ -26,4 +27,11 @@ func (r *userRepository) FindByEmail(email string) (*models.User, error) {
 
 func (r *userRepository) CreateUser(user *models.User) error {
 	return r.db.Create(user).Error
+}
+
+func (r *userRepository) FindFavoritesByUserId(userid int) ([]models.Favorites, error) {
+
+	var favorites []models.Favorites
+	result := r.db.Where("user_id = ?", userid).Find(&favorites)
+	return favorites, result.Error
 }

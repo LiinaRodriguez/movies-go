@@ -3,18 +3,16 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/liinarodriguez/movies-go/movies-back/api"
 	"github.com/liinarodriguez/movies-go/movies-back/services"
 	"net/http"
 )
 
 type MovieController struct {
 	movieService services.MovieService
-	tmdbCLient   api.TmdbClient
 }
 
-func NewMovieController(movieService services.MovieService, tmdbClient api.TmdbClient) *MovieController {
-	return &MovieController{movieService, tmdbClient}
+func NewMovieController(movieService services.MovieService) *MovieController {
+	return &MovieController{movieService}
 }
 
 func (c *MovieController) GetMedia(w http.ResponseWriter, r *http.Request) {
@@ -36,4 +34,18 @@ func (c *MovieController) GetMedia(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
+}
+
+func (c *MovieController) FindMovie(w http.ResponseWriter, r *http.Request) {
+	movieName := r.URL.Query().Get("movietitle")
+	movies, err := c.movieService.FindMovie(movieName)
+
+	if err != nil {
+		http.Error(w, "Error fetching media", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(movies)
+	fmt.Println(json.NewEncoder(w).Encode(movies))
 }
