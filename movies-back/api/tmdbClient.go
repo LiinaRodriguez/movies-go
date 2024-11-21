@@ -144,7 +144,7 @@ func (c *tmdbClient) FetchMedia(mediaType string) ([]Media, error) {
 
 func (c *tmdbClient) FindMovie(name string) ([]Media, error) {
 	apiURL := "https://api.themoviedb.org/3/search/movie"
-	apiKey := "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZWI4YjYzY2Q4NzZmZGY5ZTI0ZGU3ZTA5YjcyYjAwOCIsIm5iZiI6MTczMjIwNTUwNi43NDYxNCwic3ViIjoiNjcyZDgwY2ZiZTc2YjA2NDRiM2RmM2NjIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.yAvlgo0N459tK6c_8V9QhHSH_qbr_GMoa37gVaa4zIw"
+	apiKey := utils.GetEnv("TMDB_API_TOKEN")
 	query := name
 	params := url.Values{}
 	params.Add("query", query)
@@ -221,7 +221,7 @@ func (c *tmdbClient) FindMovie(name string) ([]Media, error) {
 func (c *tmdbClient) FindMovieById(movie string) (Media, error) {
 	movie = "tt" + movie
 	url := fmt.Sprintf("https://api.themoviedb.org/3/find/%s?external_source=imdb_id", movie)
-	apiKey := "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZWI4YjYzY2Q4NzZmZGY5ZTI0ZGU3ZTA5YjcyYjAwOCIsIm5iZiI6MTczMjIwNTUwNi43NDYxNCwic3ViIjoiNjcyZDgwY2ZiZTc2YjA2NDRiM2RmM2NjIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.yAvlgo0N459tK6c_8V9QhHSH_qbr_GMoa37gVaa4zIw"
+	apiKey := utils.GetEnv("TMDB_API_TOKEN")
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
