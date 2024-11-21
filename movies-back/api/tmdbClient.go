@@ -230,7 +230,7 @@ func (c *tmdbClient) FindMovieById(movie string) (Media, error) {
 	}
 	req.Header.Add("accept", "application/json")
 	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", apiKey))
-
+	// Ejecutar la solicitud HTTP.
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
 		fmt.Printf("Error executing request: %v\n", err)
@@ -238,37 +238,41 @@ func (c *tmdbClient) FindMovieById(movie string) (Media, error) {
 	}
 	defer res.Body.Close()
 
-	var result TmdbMediaResults
+	// Definir la estructura para mapear la respuesta JSON de la API.
+	var result struct {
+		MovieResults []TmdbMedia `json:"movie_results"`
+	}
+
+	// Decodificar la respuesta JSON.
 	if err = json.NewDecoder(res.Body).Decode(&result); err != nil {
 		fmt.Printf("Error decoding response: %v\n", err)
 		return Media{}, fmt.Errorf("error decoding response: %w", err)
 	}
 
-	if len(result.Results) == 0 {
+	// Verificar si se encontraron resultados.
+	if len(result.MovieResults) == 0 {
 		fmt.Printf("No media found for movie ID: %s\n", movie)
 		return Media{}, fmt.Errorf("no media found for movie ID: %s", movie)
 	}
+	movieResults := result.MovieResults[0]
 
-	movieResults := result.Results[0]
+	// Obtener la calificación de la película (suponiendo que la función GetMovieRating existe).
+	mediaRating, err := c.omdb.GetMovieRating(movie)
+	if err != nil {
+		fmt.Printf("Error getting movie rating: %v\n", err)
+		return Media{}, fmt.Errorf("error getting movie rating: %w", err)
+	}
 
-	// Ahora tienes movieResults de tipo TmdbMedia que contiene la información de la película o serie
-	fmt.Printf("First movie result: %+v\n", movieResults)
-	var mediaRating float64
-	mediaRating, err = c.omdb.GetMovieRating(movie)
-
-	// Mapear el TmdbMedia a tu tipo Media
+	// Mapear los resultados de TMDb al tipo Media.
 	mediaResult := Media{
 		ID:          movieResults.ID,
 		Title:       movieResults.Title,
-		Name:        movieResults.Name,
 		Overview:    movieResults.Overview,
 		PosterPath:  movieResults.PosterPath,
 		ReleaseDate: movieResults.ReleaseDate,
-		IMDBID:      movie,       // Asumimos que `movie` es el ID de IMDb
-		Rating:      mediaRating, // Asumimos que `mediaRating` es el rating de la película
+		IMDBID:      movie,       // Asumimos que `movie` es el ID de IMDb.
+		Rating:      mediaRating, // Asumimos que `mediaRating` es el rating de la película.
 	}
-
-	fmt.Printf("Final media result: %+v\n", mediaResult)
 
 	return mediaResult, nil
 }
