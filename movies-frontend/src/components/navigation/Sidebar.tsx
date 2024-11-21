@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
 
-import { Compass, Heart, UserCircle, Settings, Inbox, Film } from '../../assets/Icons'
+import { Compass, Heart, UserCircle, Settings, Inbox, Film, Edit } from '../../assets/Icons'
 
 const sideBarTop = [
   { name: 'Explore', icon: <Compass />, href: '/explore' },
   { name: 'For you', icon: <Inbox />, href: '/foryou' },
   { name: 'Favorites', icon: <Heart />, href: '/favorites' },
+  {name: 'Your ratings', icon:<Edit />, href: '/myratings'}
 ];
 
 const sideBarBottom = [
