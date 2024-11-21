@@ -26,7 +26,7 @@ func RegisterRoutes(router *mux.Router) {
 
 	// Ruta para obtener todas las películas
 	router.HandleFunc("/movies", movieController.GetMedia).Methods("GET")
-
+	router.HandleFunc("/foryou", movieController.GetRecommendations).Methods("POST")
 	// Rutas de autenticación
 	router.HandleFunc("/register", authController.Register).Methods("POST")
 	router.HandleFunc("/login", authController.Login).Methods("POST")
