@@ -26,9 +26,14 @@ func (c *MovieController) GetMedia(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error fetching media", http.StatusInternalServerError)
 		return
 	}
+	media := movies
+
+	response := map[string]interface{}{
+		"data": media,
+	}
+
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(movies)
-	fmt.Println(json.NewEncoder(w).Encode(movies))
+	json.NewEncoder(w).Encode(response)
 }
 
 func (c *MovieController) FindMovie(w http.ResponseWriter, r *http.Request) {
