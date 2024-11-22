@@ -31,7 +31,7 @@ export default function Sidebar() {
     ));
   return (
     <>
-      <div className="p-4 sm:ml-64 ">
+      <div className="p-1 sm:ml-60 ">
         <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0  border-gray-200 mb-2  rounded-xl dark:border-gray-700" aria-label="Sidebar">
           
           <div className=" p-4 ml-4 mr-2 mt-4 mb-10 rounded-2xl overflow-y-auto bg-shark-950">

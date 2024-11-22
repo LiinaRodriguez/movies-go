@@ -1,17 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Star } from "../assets/Icons";
-
-// Definir el tipo Movie
-interface Movie {
-  id: number;
-  title: string;
-  year: string;
-  rating: string;
-  description: string;
-  image: string;
-  genres: string[];
-}
+import { Movie } from "../types/types";
 
 // Datos de ejemplo de las películas (puedes reemplazarlos con una llamada API si es necesario)
 const moviesData: Movie[] = [

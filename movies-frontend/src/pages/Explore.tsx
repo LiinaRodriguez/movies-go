@@ -1,52 +1,63 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
+import { getMovies } from "../api/movieApi";
 import { truncateDescription } from "../utils/utils";
-
-// Ejemplo de películas estáticas (puedes reemplazar con API o base de datos)
-const moviesData = [
-  {
-    id: 1,
-    title: "Inception",
-    year: "2010",
-    rating: "8.8",
-    description: "A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...",
-    image: "https://example.com/inception.jpg",
-    genres: ["Action", "Sci-Fi", "Thriller"]
-  },
-  {
-    id:2,
-    title: "The Matrix",
-    year: "1999",
-    rating: "8.7",
-    description: "A computer hacker learns from mysterious rebels about the true nature of his reality...",
-    image: "https://example.com/matrix.jpg",
-    genres: ["Action", "Sci-Fi"]
-  },
-];
-
+import { Movie } from "../types/types";
 const Explore: React.FC = () => {
-  const [movies, setMovies] = useState(moviesData); // Estado para almacenar las películas
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Aquí podrías hacer una llamada a una API para obtener las películas
-    // fetch("/api/movies")
-    //   .then(response => response.json())
-    //   .then(data => setMovies(data));
-    setMovies(moviesData)
-  }, []);
+    const fetchMovies = async () => {
+      try {
+        setLoading(true);
+        setError(null); 
+        const response = await getMovies();
+
+        if (response && Array.isArray(response.data)) {
+          setMovies(response.data);
+        } else {
+          console.error("Formato inesperado de la respuesta.");
+          setError("Error: formato inesperado de la respuesta del servidor.");
+        }
+      } catch (err) {
+        console.error("Error al obtener películas:", err);
+        setError("Error al cargar las películas. Intenta nuevamente más tarde.");
+      } finally {
+        setLoading(false);
+        console.log("Movies", movies)
+      }
+    };
+
+    fetchMovies();
+    console.log("Movies", movies)
+  }, );
+
+  if (loading) {
+    return <div>Loading movies...</div>;
+  }
+
+  if (error) {
+    return <div className="text-red-500">{error}</div>;
+  }
+
+  if (movies.length === 0) {
+    return <div>No movies found</div>;
+  }
 
   return (
     <div className="flex flex-wrap justify-center gap-4 p-4">
-      {movies.map((movie, index) => (
+      {movies.map((movie) => (
         <MovieCard
-          key={index}
+          key={movie.id}
           id={movie.id}
           title={movie.title}
-          year={movie.year}
+          year={movie.release_date}
           rating={movie.rating}
-          description={truncateDescription(movie.description)}
-          image={movie.image}
-          genres={movie.genres}
+          description={truncateDescription(movie.overview)}
+          image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          genres={["Action", "Triller"]}
         />
       ))}
     </div>
