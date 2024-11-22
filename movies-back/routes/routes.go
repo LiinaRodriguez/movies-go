@@ -26,13 +26,24 @@ func RegisterRoutes(router *mux.Router) {
 	authService := services.NewAuthService(userRepo)
 	authController := controllers.NewAuthController(authService)
 
-	// Ruta para obtener todas las películas
+	// Ruta para obtener todas las peliculas
 	router.HandleFunc("/movies", movieController.GetMedia).Methods("GET")
 	router.HandleFunc("/find", movieController.FindMovie).Methods("GET")
 	router.HandleFunc("/foryou", userController.GetRecommendations).Methods("POST")
 	router.HandleFunc("/favorites", userController.GetFavorites).Methods("POST")
 	router.HandleFunc("/rated", userController.GetRatedMovies).Methods("POST")
-	// Rutas de autenticación
+
+	// Rutas para agregar o eliminar peliculas de favoritos
+	router.HandleFunc("/favorites/add", userController.AddFavoriteMovie).Methods("POST")
+	router.HandleFunc("/favorites/remove", userController.RemoveFavoriteMovie).Methods("POST")
+
+	// Ruta para calificar una pelicula
+	router.HandleFunc("/rate", userController.RateMovie).Methods("POST")
+
+	// Ruta para eliminar una calificacion de película
+	router.HandleFunc("/rate/remove", userController.RemoveRating).Methods("POST")
+
+	// Rutas de autenticacion
 	router.HandleFunc("/register", authController.Register).Methods("POST")
 	router.HandleFunc("/login", authController.Login).Methods("POST")
 

@@ -14,6 +14,8 @@ type MovieService interface {
 	RemoveFavoriteMovie(userID int, movieID string) error
 	RemoveRating(userID int, movieID string) error
 	GetRatedMoviesByUserIdWithPagination(userid int, limit int, offset int) ([]models.Rating, error)
+	AddFavoriteMovie(userid int, id string) error
+	RateMovie(userID int, movieID string, rating int) error
 }
 
 type movieService struct {

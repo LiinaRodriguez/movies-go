@@ -11,6 +11,10 @@ type UserService interface {
 	GetFavorites(userid int) ([]api.Media, error)
 	RecommendFromTheMatrix(userid int) ([]api.Media, error)
 	GetRatedMoviesByUserId(userid int, page int, pageSize int) ([]api.Media, error)
+	RemoveRating(id int, id2 string) error
+	AddFavoriteMovie(id int, id2 string) error
+	RemoveFavoriteMovie(id int, id2 string) error
+	RateMovie(id int, id2 string, rating int) error
 }
 
 type userService struct {
@@ -88,4 +92,19 @@ func (s *userService) GetRatedMoviesByUserId(userid int, page int, pageSize int)
 	}
 
 	return moviesmedia, nil
+}
+func (s *userService) RemoveRating(userid int, movieID string) error {
+	return s.movieService.RemoveRating(userid, movieID)
+}
+
+func (s *userService) AddFavoriteMovie(userid int, movieID string) error {
+	return s.movieService.AddFavoriteMovie(userid, movieID)
+}
+
+func (s *userService) RemoveFavoriteMovie(userid int, movieID string) error {
+	return s.movieService.RemoveFavoriteMovie(userid, movieID)
+}
+
+func (s *userService) RateMovie(userid int, movieID string, rating int) error {
+	return s.movieService.RateMovie(userid, movieID, rating)
 }
