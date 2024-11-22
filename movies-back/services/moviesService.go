@@ -32,6 +32,6 @@ func (s *movieService) FindMovie(name string) ([]api.Media, error) {
 	return s.tmdbClient.FindMovie(name)
 }
 
-func (s *movieService) GetMovieById(a string) (api.Media, error) {
-	return s.tmdbClient.FindMovieById(a)
+func (s *movieService) GetMovieById(movieid string) (api.Media, error) {
+	return s.tmdbClient.FindMovieById(movieid)
 }

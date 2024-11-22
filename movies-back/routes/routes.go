@@ -31,6 +31,7 @@ func RegisterRoutes(router *mux.Router) {
 	router.HandleFunc("/find", movieController.FindMovie).Methods("GET")
 	router.HandleFunc("/foryou", userController.GetRecommendations).Methods("POST")
 	router.HandleFunc("/favorites", userController.GetFavorites).Methods("POST")
+	router.HandleFunc("/rated", userController.GetRatedMovies).Methods("POST")
 	// Rutas de autenticación
 	router.HandleFunc("/register", authController.Register).Methods("POST")
 	router.HandleFunc("/login", authController.Login).Methods("POST")
