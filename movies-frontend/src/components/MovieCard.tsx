@@ -26,12 +26,16 @@ const MovieCard: React.FC<MovieCardProps> = ({
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
+    if (isFavorite) {
+      addFavorite()
+    }
   };
 
   const toggleRateModal = () => {
     setShowRateModal(!showRateModal);
   };
 
+  
   return (
     <div className="w-52 h-96 m-2">
      
@@ -127,5 +131,13 @@ const MovieCard: React.FC<MovieCardProps> = ({
     </div>
   );
 };
+
+const addFavorite(favorite: { user_id: number, movie_id: string }) => {
+
+}
+
+const removeFavorite(user_id:number, movie_id:string) => {
+    
+}
 
 export default MovieCard;

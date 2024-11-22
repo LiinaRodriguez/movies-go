@@ -6,6 +6,8 @@ import Profile from './pages/Profile';
 import Settings  from './pages/Settings';
 import Layout from './app/Layout';
 import MovieDetail from './pages/MovieDetail'
+import SearchResults from './pages/SearchResults';
+import  Foryou  from './pages/Foryou';
 
 
 const App = (): JSX.Element => {
@@ -18,8 +20,9 @@ const App = (): JSX.Element => {
             <Route element={<ProtectedPages />}>
               <Route element={<Layout/>} >
                 <Route path="/explore" element={<Explore />} />
-                <Route path="/movie/:movieId" element={<MovieDetail/>} />
-                <Route path="/foryou" />
+                <Route path="/movie/:movieId" element={<MovieDetail />} />
+                <Route path= "/find/:query" element={<SearchResults/>}/>
+                <Route path="/foryou" element={<Foryou/>} />
                 <Route path='/favorites' />
               </Route>
               <Route path='/settings' element={<Settings/>} />

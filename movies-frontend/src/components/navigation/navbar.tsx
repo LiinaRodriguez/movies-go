@@ -1,6 +1,19 @@
+import { useState } from "react";
 import { ProfileDropdown } from "../Dropdown";
 
+import { useNavigate } from 'react-router-dom';
+
 const Navbar = () => {
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("")
+
+  
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Redirige con el término de búsqueda en la URL sin hacer la llamada a la API aquí
+    navigate(`/find/${query}`);
+  };
+
   return (
     <nav className="bg-transparent ">
       <div className="max-w-7xl mx-auto pr-4 pl-0 sm:px-0 lg:px-0">
@@ -12,9 +25,12 @@ const Navbar = () => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full px-4 py-2 outline-none bg-shark-950 border-none focus:ring-transparent rounded-full focus:outline-none focus:border-none"
+                className="w-full px-4 py-2 outline-none bg-shark-950 text-gray-100 border-none focus:ring-transparent rounded-full focus:outline-none focus:border-none"
+                onChange={(e)=> setQuery(e.target.value) }
               />
-              <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-100 bg-transparent">
+             <form onSubmit={handleSearch}>
+              <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-100 bg-transparent"
+                >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -29,7 +45,8 @@ const Navbar = () => {
                     d="M21 21l-4.35-4.35M16.05 11.05a5 5 0 11-10 0 5 5 0 0110 0z"
                   />
                 </svg>
-              </button>
+                </button>
+                </form>
             </div>
           </div>
 

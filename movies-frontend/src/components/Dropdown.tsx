@@ -76,7 +76,7 @@ export  function ProfileDropdown() {
           className="w-10 h-10 rounded-full"
         />
         <span className="hidden sm:block font-medium text-gray-100 font-montserrat ml-2">
-          John Doe
+          {localStorage.getItem("user")}
         </span>
         <svg
           className={`w-4 h-4 ml-2 transform transition-transform ${

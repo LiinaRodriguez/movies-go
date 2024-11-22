@@ -23,6 +23,8 @@ const Login = ({ toggleForm }: { toggleForm: () => void }) => {
       console.log('User logged')
       localStorage.setItem('token', response.data.token)
       console.log(localStorage.getItem('token'))
+      localStorage.setItem('user_id', response.data.user_id)
+      localStorage.setItem('user', response.data.user)
       navigate('/explore');
     } catch (error) {
       setError('An error has ocurred during log')
