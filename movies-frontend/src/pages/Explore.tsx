@@ -1,56 +1,72 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
-import { truncateDescription } from "../utils/utils";
+import { getMovies } from "../api/movieApi";
 
-// Ejemplo de películas estáticas (puedes reemplazar con API o base de datos)
-const moviesData = [
-  {
-    id: 1,
-    title: "Inception",
-    year: "2010",
-    rating: "8.8",
-    description: "A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...A thief who steals corporate secrets through the use of dream-sharing technology...",
-    image: "https://example.com/inception.jpg",
-    genres: ["Action", "Sci-Fi", "Thriller"]
-  },
-  {
-    id:2,
-    title: "The Matrix",
-    year: "1999",
-    rating: "8.7",
-    description: "A computer hacker learns from mysterious rebels about the true nature of his reality...",
-    image: "https://example.com/matrix.jpg",
-    genres: ["Action", "Sci-Fi"]
-  },
-];
-
+import { Movie } from "../types/types";
+import { CustomDropdown } from "../components/Dropdown";
 const Explore: React.FC = () => {
-  const [movies, setMovies] = useState(moviesData); // Estado para almacenar las películas
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState("All");
 
+  
   useEffect(() => {
-    // Aquí podrías hacer una llamada a una API para obtener las películas
-    // fetch("/api/movies")
-    //   .then(response => response.json())
-    //   .then(data => setMovies(data));
-    setMovies(moviesData)
-  }, []);
+    const fetchMovies = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        // Llamada a la API con el valor seleccionado como filtro
+        const response = await getMovies(selectedOption);
+
+        if (response && Array.isArray(response.data)) {
+          setMovies(response.data);
+        } else {
+          console.error("Formato inesperado de la respuesta.");
+          setError("Error: formato inesperado de la respuesta del servidor.");
+        }
+      } catch (err) {
+        console.error("Error al obtener películas:", err);
+        setError("Error al cargar las películas. Intenta nuevamente más tarde.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMovies();
+  }, [selectedOption]);
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 p-4">
-      {movies.map((movie, index) => (
-        <MovieCard
-          key={index}
-          id={movie.id}
-          title={movie.title}
-          year={movie.year}
-          rating={movie.rating}
-          description={truncateDescription(movie.description)}
-          image={movie.image}
-          genres={movie.genres}
-        />
-      ))}
+    <div className="p-4">
+      {/* Dropdown siempre visible 
+      <CustomDropdown
+        selected={selectedOption}
+        onSelect={setSelectedOption}
+      />*/}
+
+      {/* Contenido según el estado */}
+      {loading && <div>Loading movies...</div>}
+      {error && <div className="text-red-500">{error}</div>}
+      {!loading && !error && movies.length === 0 && <div>No movies found</div>}
+      
+      <div className="flex flex-wrap justify-center gap-4 mt-4">
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            id={movie.id}
+            title={movie.title}
+            release_date={movie.release_date}
+            rating={movie.rating}
+            overview={movie.overview}
+            poster_path={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            genres={["Action", "Thriller"]}
+          />
+        ))}
+      </div>
     </div>
   );
 };
+
 
 export default Explore;

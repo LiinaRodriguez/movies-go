@@ -2,15 +2,20 @@ import { useState } from "react";
 import Logout from "../pages/auth/Logout";
 import { ArrowOutSquare } from "../assets/Icons";
 
-export  function CustomDropdown() {
-  const [selected, setSelected] = useState("All");
+type CustomDropdownProps = {
+  selected: string;
+  onSelect: (option: string) => void;
+}
+export  function CustomDropdown({selected, onSelect}:CustomDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const options = ["All", "Movies", "Series"];
+  
 
   const handleSelect = (option: string) => {
-    setSelected(option);
+    onSelect(option)
     setIsOpen(false);
+    console.log(selected)
   };
 
   return (

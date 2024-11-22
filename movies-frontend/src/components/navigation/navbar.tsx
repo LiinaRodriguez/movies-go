@@ -1,4 +1,4 @@
-import { CustomDropdown, ProfileDropdown } from "../Dropdown";
+import { ProfileDropdown } from "../Dropdown";
 
 const Navbar = () => {
   return (
@@ -6,7 +6,6 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto pr-4 pl-0 sm:px-0 lg:px-0">
         <div className="flex justify-between items-center h-16 p-4 ml-4 mr-2 mt-2 mb-10">
           
-        <CustomDropdown/>
           {/* Barra de búsqueda */}
           <div className="flex-grow  mx-4">
             <div className="relative">
