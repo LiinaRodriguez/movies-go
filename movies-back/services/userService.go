@@ -49,6 +49,7 @@ func (s *userService) GetFavorites(userid int) ([]api.Media, error) {
 
 func (s *userService) RecommendFromTheMatrix(userid int) ([]api.Media, error) {
 	recommendations, err := machinelearning.RecommendFromMatrix(userid)
+
 	if err != nil {
 		fmt.Println(err)
 		return nil, err
@@ -87,7 +88,7 @@ func (s *userService) GetRatedMoviesByUserId(userid int, page int, pageSize int)
 		}
 
 		// Reemplazar el campo Rating con la calificación del usuario
-		media.Rating = ratedmovie.Rating * 2
+		media.Rating = ratedmovie.Rating
 		moviesmedia = append(moviesmedia, media)
 	}
 

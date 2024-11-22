@@ -36,8 +36,9 @@ export const getForyou = async (user: { user_id: number, email: string, token: s
 
 export const addFavorite = async (favorite: { user_id: number, movie_id: string })=>{
   try {
-    const response = await axiosClient.post('/addFavorite', favorite)
-    return response
+    console.log(favorite)
+    const response = await axiosClient.post('/favorites/add', favorite)
+    console.log("add fav", response)
   }
   catch (error) {
     console.error("Error sending request", error)
@@ -47,8 +48,8 @@ export const addFavorite = async (favorite: { user_id: number, movie_id: string 
 
 export const removeFavorite = async (favorite: { user_id: number, movie_id: string })=>{
   try {
-    const response = await axiosClient.post('/addFavorite', favorite)
-    return response
+    const response = await axiosClient.post('/favorites/remove', favorite)
+    console.log("remove fav", response)
   }
   catch (error) {
     console.error("Error sending request", error)
@@ -65,4 +66,38 @@ export const getFavorites = async (user: { user_id: number, email: string, token
     throw error
   }
   
+}
+
+export const getRated = async (user: { user_id: number, page: number, pageSize: number }) => {
+  try {
+    const response = await axiosClient.post('/rated', user)
+    return response
+  } catch (error) {
+    console.error("Error sending request", error)
+    throw error
+  }
+}
+
+
+export const addRate = async (rating: { user_id: number, movie_id: string, rating:number })=>{
+  try {
+    console.log(rating)
+    const response = await axiosClient.post('/rate', rating)
+    console.log("add rate", response)
+  }
+  catch (error) {
+    console.error("Error sending request", error)
+    throw error;
+  }
+}
+
+export const removeRate = async (rating: { user_id: number, movie_id: string,  rating:number })=>{
+  try {
+    const response = await axiosClient.post('/rate/remove', rating)
+    console.log("remove fav", response)
+  }
+  catch (error) {
+    console.error("Error sending request", error)
+    throw error;
+  }
 }

@@ -1,25 +1,31 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Movie } from "../types/types";
-import { findMovie } from "../api/movieApi";
+import { getRated} from "../api/movieApi";
 import MovieCard from "../components/MovieCard";
 import Loader from "../components/Loader";
-const SearchResults = () => {
+const Ratings = () => {
   const { query } = useParams(); // Obtener el término de búsqueda de la URL
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!query) return; // No hacer nada si no hay término de búsqueda
-
+    
     const fetchMovies = async () => {
+      const userIdFromStorage = localStorage.getItem("user_id");
+      const user = {
+        user_id: userIdFromStorage ? parseInt(userIdFromStorage) : -1,
+        page: 1,
+        pageSize: 20,
+      };
       try {
         setLoading(true);
         setError(null);
-        const response = await findMovie(query); // Llamada a la API con el término de búsqueda
+        const response = await getRated(user as {user_id:number, page:number, pageSize:number}); // Llamada a la API con el término de búsqueda
         if (response && Array.isArray(response.data)) {
           setMovies(response.data);
+          console.log(response.data)
         } else {
           setError("Formato inesperado de la respuesta del servidor.");
         }
@@ -31,7 +37,7 @@ const SearchResults = () => {
     };
 
     fetchMovies();
-  }, [query]); // Hacer la llamada a la API cada vez que el término de búsqueda cambie
+  }, []); 
 
   return (
     <div>
@@ -57,4 +63,4 @@ const SearchResults = () => {
   );
 };
 
-export default SearchResults;
+export default Ratings;

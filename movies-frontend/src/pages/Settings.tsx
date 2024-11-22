@@ -31,7 +31,7 @@ const Settings = (): JSX.Element => {
             <input
               type="email"
               id="email"
-              value={email}
+              value={localStorage.getItem("user")}
               onChange={(e) => setEmail(e.target.value)}
               className="mt-2 block w-full px-5 py-3 bg-gray-100 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               required

@@ -7,8 +7,9 @@ import Settings  from './pages/Settings';
 import Layout from './app/Layout';
 import MovieDetail from './pages/MovieDetail'
 import SearchResults from './pages/SearchResults';
-import  Foryou  from './pages/Foryou';
-
+import Foryou from './pages/Foryou';
+import Favorites from './pages/Favorites';
+import Ratings from './pages/Ratings';
 
 const App = (): JSX.Element => {
   return (
@@ -23,7 +24,8 @@ const App = (): JSX.Element => {
                 <Route path="/movie/:movieId" element={<MovieDetail />} />
                 <Route path= "/find/:query" element={<SearchResults/>}/>
                 <Route path="/foryou" element={<Foryou/>} />
-                <Route path='/favorites' />
+                <Route path='/favorites' element={<Favorites />} />  
+                <Route path='/myratings'element={<Ratings/>} />
               </Route>
               <Route path='/settings' element={<Settings/>} />
               <Route path='/profile' element={ <Profile/>} />

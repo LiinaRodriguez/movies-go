@@ -42,8 +42,19 @@ func (c *UserController) GetRatedMovies(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
+	var response map[string]interface{}
+	if len(movies) == 0 {
+		response = map[string]interface{}{
+			"data": []string{},
+		}
+	} else {
+		response = map[string]interface{}{
+			"data": movies,
+		}
+	}
+
 	w.Header().Set("Content-Type", "application/json")
-	if err := json.NewEncoder(w).Encode(movies); err != nil {
+	if err := json.NewEncoder(w).Encode(response); err != nil {
 		http.Error(w, "Error encoding response", http.StatusInternalServerError)
 		return
 	}
@@ -118,9 +129,18 @@ func (c *UserController) GetFavorites(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error fetching favorites", http.StatusInternalServerError)
 		return
 	}
-
+	var response map[string]interface{}
+	if len(movies) == 0 {
+		response = map[string]interface{}{
+			"data": []string{},
+		}
+	} else {
+		response = map[string]interface{}{
+			"data": movies,
+		}
+	}
 	w.Header().Set("Content-Type", "application/json")
-	if err := json.NewEncoder(w).Encode(movies); err != nil {
+	if err := json.NewEncoder(w).Encode(response); err != nil {
 		http.Error(w, "Error encoding response", http.StatusInternalServerError)
 		return
 	}

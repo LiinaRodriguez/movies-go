@@ -3,7 +3,6 @@ import MovieCard from "../components/MovieCard";
 import { getMovies } from "../api/movieApi";
 
 import { Movie } from "../types/types";
-import { CustomDropdown } from "../components/Dropdown";
 const Explore: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -22,6 +21,7 @@ const Explore: React.FC = () => {
 
         if (response && Array.isArray(response.data)) {
           setMovies(response.data);
+          console.log("movies", response.data)
         } else {
           console.error("Formato inesperado de la respuesta.");
           setError("Error: formato inesperado de la respuesta del servidor.");
@@ -35,7 +35,7 @@ const Explore: React.FC = () => {
     };
 
     fetchMovies();
-  }, [selectedOption]);
+  }, []);
 
   return (
     <div className="p-4">
@@ -61,6 +61,7 @@ const Explore: React.FC = () => {
             overview={movie.overview}
             poster_path={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             genres={["Action", "Thriller"]}
+            imdb_id={movie.imdb_id}
           />
         ))}
       </div>

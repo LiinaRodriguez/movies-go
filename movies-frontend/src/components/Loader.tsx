@@ -1,11 +1,8 @@
 import React from "react";
-import { Movie } from "../types/types";
 
-interface LoaderProps {
-  movies: Movie[];
-}
 
-const Loader: React.FC<LoaderProps> = ({ movies }) => {
+
+const Loader: React.FC = () => {
   return (
     <div className="relative flex items-center justify-center bg-transparent rounded-3xl overflow-hidden">
       {/* Fondo de películas */}

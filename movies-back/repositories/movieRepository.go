@@ -53,6 +53,6 @@ func (r *movieRepository) RemoveRating(userID int, movieID string) error {
 
 func (r *movieRepository) GetRatedMoviesByUserIdWithPagination(userid int, limit int, offset int) ([]models.Rating, error) {
 	var ratings []models.Rating
-	result := r.db.Where("user_id = ?", userid).Limit(limit).Offset(offset).Find(&ratings)
+	result := r.db.Where("user_id = ?", userid).Limit(50).Offset(offset).Find(&ratings)
 	return ratings, result.Error
 }
