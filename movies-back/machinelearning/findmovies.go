@@ -12,60 +12,6 @@ var (
 	once              sync.Once
 )
 
-// Calculate similarities
-type movieScore struct {
-	MovieId    string
-	Similarity float64
-}
-
-/*
-func FindMoviesByWordEmbedding(tag string) []string {
-	movieMap, err := GetMovies()
-	if err != nil {
-		fmt.Printf("Error loading movie map: %v\n", err)
-		return nil
-	}
-
-	vectors, err := loadWordVectors()
-	if err != nil {
-		fmt.Printf("Error loading word vectors: %v\n", err)
-		return nil
-	}
-
-	tagVector, exists := vectors[tag]
-	if !exists {
-		fmt.Printf("The tag '%s' does not have an associated vector.\n", tag)
-		return nil
-	}
-
-	movieEmbeddings, err := CreateMovieTagEmbeddings()
-	if err != nil {
-		fmt.Printf("Error creating movie embeddings: %v\n", err)
-		return nil
-	}
-
-	var similarities []float64
-	var movieIds []string
-	for movieId, movieVector := range movieEmbeddings {
-		similarity := configuration.CosineSimilarity(tagVector, movieVector)
-		similarities = append(similarities, similarity)
-		movieIds = append(movieIds, movieId)
-	}
-
-	// Obtén los índices de los Top K (10 por defecto) vecinos
-	topKIndices := models.GetTopKNeighbors(similarities, 36)
-
-	var relatedMovieIds []string
-	for _, idx := range topKIndices {
-		movieId := movieIds[idx]
-		if _, exists := movieMap[movieId]; exists {
-			relatedMovieIds = append(relatedMovieIds, movieId)
-		}
-	}
-
-	return relatedMovieIds[:10]
-}*/
-
 func FindMoviesByWordEmbedding(tag string) []string {
 	movieMap, err := GetMovies()
 	if err != nil {
@@ -99,7 +45,6 @@ func FindMoviesByWordEmbedding(tag string) []string {
 		return nil
 	}
 
-	// Normalizar el vector combinado (promedio)
 	for i := range combinedVector {
 		combinedVector[i] /= float64(len(words))
 	}
@@ -119,7 +64,6 @@ func FindMoviesByWordEmbedding(tag string) []string {
 		movieIds = append(movieIds, movieId)
 	}
 
-	// Obtener los índices de los Top K (10 por defecto) vecinos
 	topKIndices := GetTopKNeighbors(similarities, 36)
 
 	var relatedMovieIds []string

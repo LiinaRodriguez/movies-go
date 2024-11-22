@@ -9,6 +9,7 @@ type UserRepository interface {
 	FindByEmail(email string) (*models.User, error)
 	CreateUser(user *models.User) error
 	FindFavoritesByUserId(userid int) ([]models.Favorites, error)
+	GetRatedMoviesByUserIdWithPagination(userid int, limit int, offset int) ([]models.Rating, error)
 }
 
 type userRepository struct {
@@ -34,4 +35,10 @@ func (r *userRepository) FindFavoritesByUserId(userid int) ([]models.Favorites, 
 	var favorites []models.Favorites
 	result := r.db.Where("user_id = ?", userid).Find(&favorites)
 	return favorites, result.Error
+}
+
+func (r *userRepository) GetRatedMoviesByUserIdWithPagination(userid int, limit int, offset int) ([]models.Rating, error) {
+	var ratings []models.Rating
+	result := r.db.Where("user_id = ?", userid).Limit(limit).Offset(offset).Find(&ratings)
+	return ratings, result.Error
 }

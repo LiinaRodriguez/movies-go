@@ -10,47 +10,41 @@ import (
 )
 
 func CreateUserMovieMatrix() (map[int]int, map[string]int, [][]float64, error) {
-	// Query the database to get ratings
+
 	var ratings []struct {
 		UserId  int     `json:"user_id"`
 		MovieId string  `json:"movie_id"`
 		Rating  float64 `json:"rating"`
 	}
 
-	// Execute the SQL query with GORM and map the results directly to the ratings variable
 	err := config.DB.Raw("SELECT user_id, movie_id, rating FROM ratings ORDER BY user_id, movie_id").Scan(&ratings).Error
 	if err != nil {
 		return nil, nil, nil, err
 	}
 
-	// User and movie mappings
-	userIndex := make(map[int]int)     // Map UserId -> index
-	movieIndex := make(map[string]int) // Map MovieId -> index
+	userIndex := make(map[int]int)
+	movieIndex := make(map[string]int)
 	var matrix [][]float64
 
-	// Process the results to build user and movie indices
 	for _, rating := range ratings {
 		if _, exists := userIndex[rating.UserId]; !exists {
 			userIndex[rating.UserId] = len(userIndex)
 		}
 
-		// Assign indices for movies
 		if _, exists := movieIndex[rating.MovieId]; !exists {
 			movieIndex[rating.MovieId] = len(movieIndex)
 		}
 	}
 
-	// Initialize the matrix with the correct dimensions
 	matrix = make([][]float64, len(userIndex))
 	for i := range matrix {
 		matrix[i] = make([]float64, len(movieIndex))
 	}
 
-	// Fill the matrix with ratings
 	for _, rating := range ratings {
-		userIdx := userIndex[rating.UserId]       // User index
-		movieIdx := movieIndex[rating.MovieId]    // Movie index
-		matrix[userIdx][movieIdx] = rating.Rating // Fill the matrix with the rating
+		userIdx := userIndex[rating.UserId]
+		movieIdx := movieIndex[rating.MovieId]
+		matrix[userIdx][movieIdx] = rating.Rating
 	}
 
 	return userIndex, movieIndex, matrix, nil
@@ -76,7 +70,6 @@ func RecommendFromMatrix(userId int) ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	userIdx, userExists := userIndex[userId]
 	if !userExists {
 		return nil, fmt.Errorf("user %d not found", userId)
@@ -98,25 +91,41 @@ func RecommendFromMatrix(userId int) ([]string, error) {
 		}
 	}
 
-	fmt.Println(predictedRatings)
-
 	unseenMovies, err := getTopUnseenMovies(userId)
 	if err != nil {
 		return nil, err
 	}
 
-	recommendations := []string{}
+	movieRatings := make([]struct {
+		MovieID string
+		Rating  float64
+	}, 0)
+
 	for _, movieId := range unseenMovies {
 		movieIdx := movieIndex[movieId]
 		if predictedRatings[movieIdx] > 0 {
-			recommendations = append(recommendations, movieId)
+			movieRatings = append(movieRatings, struct {
+				MovieID string
+				Rating  float64
+			}{
+				MovieID: movieId,
+				Rating:  predictedRatings[movieIdx],
+			})
 		}
 	}
 
-	if len(recommendations) > 10 {
-		return recommendations[:10], nil
-	}
+	sort.Slice(movieRatings, func(i, j int) bool {
+		return movieRatings[i].Rating > movieRatings[j].Rating
+	})
 
+	recommendations := []string{}
+	for i, movie := range movieRatings {
+		if i >= 10 {
+			break
+		}
+		recommendations = append(recommendations, movie.MovieID)
+		fmt.Println(movieRatings[i].Rating)
+	}
 	return recommendations, nil
 }
 
