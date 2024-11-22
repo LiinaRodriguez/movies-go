@@ -29,7 +29,6 @@ func (c *UserController) GetRatedMovies(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
-	// Validar y asignar valores predeterminados
 	if request.Page <= 0 {
 		request.Page = 1
 	}
@@ -52,7 +51,7 @@ func (c *UserController) GetRatedMovies(w http.ResponseWriter, r *http.Request) 
 
 func (c *UserController) GetRecommendations(w http.ResponseWriter, r *http.Request) {
 	type Request struct {
-		UserID int `json:"user_id"` // Nota: "UserID" comienza con mayúscula para que sea exportado
+		UserID int `json:"user_id"`
 	}
 
 	if r.Method != http.MethodPost {
@@ -92,7 +91,7 @@ func (c *UserController) GetRecommendations(w http.ResponseWriter, r *http.Reque
 
 func (c *UserController) GetFavorites(w http.ResponseWriter, r *http.Request) {
 	type Request struct {
-		UserID int `json:"user_id"` // Nota: "UserID" comienza con mayúscula para que sea exportado
+		UserID int `json:"user_id"`
 	}
 
 	if r.Method != http.MethodPost {
@@ -126,4 +125,137 @@ func (c *UserController) GetFavorites(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	fmt.Println("Response sent successfully.")
+}
+
+func (c *UserController) AddFavoriteMovie(w http.ResponseWriter, r *http.Request) {
+	type Request struct {
+		UserID  int    `json:"user_id"`
+		MovieID string `json:"movie_id"`
+	}
+
+	if r.Method != http.MethodPost {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var request Request
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil {
+		http.Error(w, "Invalid JSON payload", http.StatusBadRequest)
+		return
+	}
+
+	if request.UserID <= 0 || request.MovieID == "" {
+		http.Error(w, "Invalid UserID or MovieID", http.StatusBadRequest)
+		return
+	}
+
+	err = c.userService.AddFavoriteMovie(request.UserID, request.MovieID)
+	if err != nil {
+		http.Error(w, "Error adding favorite movie", http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "Movie %s added to favorites for UserID %d", request.MovieID, request.UserID)
+}
+
+func (c *UserController) RemoveFavoriteMovie(w http.ResponseWriter, r *http.Request) {
+	type Request struct {
+		UserID  int    `json:"user_id"`
+		MovieID string `json:"movie_id"`
+	}
+
+	if r.Method != http.MethodPost {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var request Request
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil {
+		http.Error(w, "Invalid JSON payload", http.StatusBadRequest)
+		return
+	}
+
+	if request.UserID <= 0 || request.MovieID == "" {
+		http.Error(w, "Invalid UserID or MovieID", http.StatusBadRequest)
+		return
+	}
+
+	err = c.userService.RemoveFavoriteMovie(request.UserID, request.MovieID)
+	if err != nil {
+		http.Error(w, "Error removing favorite movie", http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "Movie %s removed from favorites for UserID %d", request.MovieID, request.UserID)
+}
+
+func (c *UserController) RateMovie(w http.ResponseWriter, r *http.Request) {
+	type Request struct {
+		UserID  int    `json:"user_id"`
+		MovieID string `json:"movie_id"`
+		Rating  int    `json:"rating"`
+	}
+
+	if r.Method != http.MethodPost {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var request Request
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil {
+		http.Error(w, "Invalid JSON payload", http.StatusBadRequest)
+		return
+	}
+
+	if request.UserID <= 0 || request.MovieID == "" || request.Rating < 1 || request.Rating > 10 {
+		http.Error(w, "Invalid UserID, MovieID or Rating", http.StatusBadRequest)
+		return
+	}
+
+	err = c.userService.RateMovie(request.UserID, request.MovieID, request.Rating)
+	if err != nil {
+		http.Error(w, "Error rating movie", http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "Movie %s rated %d by UserID %d", request.MovieID, request.Rating, request.UserID)
+}
+
+func (c *UserController) RemoveRating(w http.ResponseWriter, r *http.Request) {
+	type Request struct {
+		UserID  int    `json:"user_id"`
+		MovieID string `json:"movie_id"`
+	}
+
+	if r.Method != http.MethodPost {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var request Request
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil {
+		http.Error(w, "Invalid JSON payload", http.StatusBadRequest)
+		return
+	}
+
+	if request.UserID <= 0 || request.MovieID == "" {
+		http.Error(w, "Invalid UserID or MovieID", http.StatusBadRequest)
+		return
+	}
+
+	err = c.userService.RemoveRating(request.UserID, request.MovieID)
+	if err != nil {
+		http.Error(w, "Error removing rating", http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "Rating removed for Movie %s by UserID %d", request.MovieID, request.UserID)
 }
