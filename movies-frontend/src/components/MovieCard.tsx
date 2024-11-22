@@ -1,23 +1,24 @@
 import { useState } from "react";
 import { Star } from '../assets/Icons'
 import { Link } from "react-router-dom";
+import { truncateDescription } from "../utils/utils";
 interface MovieCardProps {
   id: number, 
   title: string;
-  year: string;
+  release_date: string;
   rating: string;
-  description: string;
-  image: string;
+  overview: string;
+  poster_path: string;
   genres: string[]; // Nueva prop para los géneros o etiquetas
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({
   id,
   title,
-  year,
+  release_date,
   rating,
-  description,
-  image,
+  overview,
+  poster_path,
   genres, // Aceptar la nueva prop
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -37,15 +38,15 @@ const MovieCard: React.FC<MovieCardProps> = ({
       <div
         className="w-52 h-72 flex items-end rounded-t-3xl bg-contain bg-center bg-no-repeat relative group"
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${poster_path})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
         <div className="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black rounded-t-3xl p-2 space-y-2 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 border border-gray-400/80">
-          <p className="text-white font-semibold text-lg">Year: {year}</p>
+          <p className="text-white font-semibold text-lg">Year: {release_date}</p>
           <hr className="mx-4 my-2 border-t-4 border-white opacity-100" />
-          <p className="text-gray-100 text-center font-semibold text-base">{description}</p>
+          <p className="text-gray-100 text-center font-semibold text-base">{truncateDescription(overview)}</p>
           <div className="flex items-center text-white font-semibold text-base space-x-2">
             <Star size={20} color="#facc15" />
             <p>{rating}</p>
@@ -76,7 +77,8 @@ const MovieCard: React.FC<MovieCardProps> = ({
         </span>
       </div>
 
-      <Link to={`/movie/${id}`}>  
+      <Link to={`/movie/${id}`}
+      state={{ id, title, release_date, rating, overview, poster_path, genres }}>  
       <p className="text-gray-900 bg-gray-200/80 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 border-b border-x border-gray-400/80 h-min font-semibold text-center py-2 rounded-b-3xl text-lg">
         <span className="block text-gray-800 text-sm">{title}</span>
         <span className="flex justify-center space-x-2 text-sm text-gray-600">

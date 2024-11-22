@@ -1,128 +1,421 @@
-[
-  {
-    "id": 912649,
-    "title": "Venom: The Last Dance",
-    "overview": "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie's last dance.",
-    "poster_path": "/aosm8NMQ3UyoBVpSxyimorCQykC.jpg",
-    "release_date": "2024-10-22",
-    "imdb_id": "tt16366836",
-    "rating": 41
-  },
-  {
-    "id": 1034541,
-    "title": "Terrifier 3",
-    "overview": "Five years after surviving Art the Clown's Halloween massacre, Sienna and Jonathan are still struggling to rebuild their shattered lives. As the holiday season approaches, they try to embrace the Christmas spirit and leave the horrors of the past behind. But just when they think they're safe, Art returns, determined to turn their holiday cheer into a new nightmare. The festive season quickly unravels as Art unleashes his twisted brand of terror, proving that no holiday is safe.",
-    "poster_path": "/l1175hgL5DoXnqeZQCcU3eZIdhX.jpg",
-    "release_date": "2024-10-09",
-    "imdb_id": "tt27911000",
-    "rating": 6.7
-  },
-  {
-    "id": 1184918,
-    "title": "The Wild Robot",
-    "overview": "After a shipwreck, an intelligent robot called Roz is stranded on an uninhabited island. To survive the harsh environment, Roz bonds with the island's animals and cares for an orphaned baby goose.",
-    "poster_path": "/wTnV3PCVW5O92JMrFvvrRcV39RU.jpg",
-    "release_date": "2024-09-12",
-    "imdb_id": "tt29623480",
-    "rating": 8.3
-  },
-  {
-    "id": 558449,
-    "title": "Gladiator II",
-    "overview": "Years after witnessing the death of the revered hero Maximus at the hands of his uncle, Lucius is forced to enter the Colosseum after his home is conquered by the tyrannical Emperors who now lead Rome with an iron fist. With rage in his heart and the future of the Empire at stake, Lucius must look to his past to find strength and honor to return the glory of Rome to its people.",
-    "poster_path": "/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg",
-    "release_date": "2024-11-13",
-    "imdb_id": "tt9218128",
-    "rating": 7
-  },
-  {
-    "id": 1118031,
-    "title": "Apocalypse Z: The Beginning of the End",
-    "overview": "When a kind of rabies that transforms people into aggressive creatures spreads across the planet, Manel isolates himself at home with his cat, relying on his wits to survive; but soon they must go out in search of food, by land and by sea, dodging many dangers.",
-    "poster_path": "/wIGJnIFQlESkC2rLpfA8EDHqk4g.jpg",
-    "release_date": "2024-10-04",
-    "imdb_id": "tt27599851",
-    "rating": 6
-  },
-  {
-    "id": 791042,
-    "title": "Levels",
-    "overview": "After witnessing his girlfriend's murder, a man risks everything - including reality itself - to discover the truth.",
-    "poster_path": "/y1xm0jMIlx9Oo2a3jWNyLGm43sJ.jpg",
-    "release_date": "2024-11-01",
-    "imdb_id": "tt10831486",
-    "rating": 5
-  },
-  {
-    "id": 533535,
-    "title": "Deadpool & Wolverine",
-    "overview": "A listless Wade Wilson toils away in civilian life with his days as the morally flexible mercenary, Deadpool, behind him. But when his homeworld faces an existential threat, Wade must reluctantly suit-up again with an even more reluctant Wolverine.",
-    "poster_path": "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
-    "release_date": "2024-07-24",
-    "imdb_id": "tt6263850",
-    "rating": 7.8
-  },
-  {
-    "id": 933260,
-    "title": "The Substance",
-    "overview": "A fading celebrity decides to use a black market drug, a cell-replicating substance that temporarily creates a younger, better version of herself.",
-    "poster_path": "/lqoMzCcZYEFK729d6qzt349fB4o.jpg",
-    "release_date": "2024-09-07",
-    "imdb_id": "tt17526714",
-    "rating": 7.5
-  },
-  {
-    "id": 1124641,
-    "title": "Classified",
-    "overview": "Operating alone in the field for more than 20 years, a CIA hitman uses the \"Help Wanted\" section of the newspapers to get his orders from the Agency. His long-lost daughter, now a UK MI6 analyst, tracks him down to deliver shocking news: his CIA boss has been dead for years and the division long since shut down. Together, they set out to discover whose orders he's been executing.",
-    "poster_path": "/3k8jv1kSAAc0rCfFGtWDDQL4dfK.jpg",
-    "release_date": "2024-09-19",
-    "imdb_id": "tt27714840",
-    "rating": 3.8
-  },
-  {
-    "id": 698687,
-    "title": "Transformers One",
-    "overview": "The untold origin story of Optimus Prime and Megatron, better known as sworn enemies, but once were friends bonded like brothers who changed the fate of Cybertron forever.",
-    "poster_path": "/qbkAqmmEIZfrCO8ZQAuIuVMlWoV.jpg",
-    "release_date": "2024-09-11",
-    "imdb_id": "tt8864596",
-    "rating": 7.7
-  },
-  {
-    "id": 945961,
-    "title": "Alien: Romulus",
-    "overview": "While scavenging the deep ends of a derelict space station, a group of young space colonizers come face to face with the most terrifying life form in the universe.",
-    "poster_path": "/b33nnKl1GSFbao4l3fZDDqsMx0F.jpg",
-    "release_date": "2024-08-13",
-    "imdb_id": "tt18412256",
-    "rating": 7.2
-  },
-  {
-    "id": 402431,
-    "title": "Wicked",
-    "overview": "Elphaba, an ostracized but defiant girl born with green skin, and Galinda, a privileged aristocrat born popular, become extremely unlikely friends in the magical Land of Oz. As the two girls struggle with their opposing personalities, their friendship is tested as both begin to fulfil their destinies as Glinda the Good and The Wicked Witch of the West.",
-    "poster_path": "/c5Tqxeo1UpBvnAc3csUm7j3hlQl.jpg",
-    "release_date": "2024-11-20",
-    "imdb_id": "tt1262426",
-    "rating": 0
-  },
-  {
-    "id": 845781,
-    "title": "Red One",
-    "overview": "After Santa Claus (codename: Red One) is kidnapped, the North Pole's Head of Security must team up with the world's most infamous bounty hunter in a globe-trotting, action-packed mission to save Christmas.",
-    "poster_path": "/cdqLnri3NEGcmfnqwk2TSIYtddg.jpg",
-    "release_date": "2024-10-31",
-    "imdb_id": "tt14948432",
-    "rating": 32
-  },
-  {
-    "id": 179387,
-    "title": "Heavenly Touch",
-    "overview": "Jonard is having trouble making ends meet. His mother is suffering from depression, and he and his sister are forced to quit school in order to take care of her. One day, Jonard meets up his friend Rodel, and Rodel introduces him to the world of massage parlors. Rodel teaches him massage, and brings him to Heavenly Touch, a syndicate-run massage parlor that mostly caters to homosexuals.",
-    "poster_path": "/ory8WuAqznTE7lfopTSymHpop2t.jpg",
-    "release_date": "2009-05-12",
-    "imdb_id": "tt1433524",
-    "rating": 5.7
-  }
-]
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/vgeDRVpSUa4Hvovg4C6dgm4dfUW.jpg",
+      "genre_ids": [
+        10766,
+        18
+      ],
+      "id": 112470,
+      "origin_country": [
+        "FR"
+      ],
+      "original_language": "fr",
+      "original_name": "Ici tout commence",
+      "overview": "This television drama series is centered around the prestigious culinary school of renowned chef Auguste Armand. The show follows the lives of students and staff as they navigate the challenges and pressures of the culinary world—delving into their personal and professional lives, revealing secrets, rivalries, and complex relationships.",
+      "popularity": 3333.238,
+      "poster_path": "/yuTHx38jpogXovMhqNatvozigMJ.jpg",
+      "first_air_date": "2020-11-02",
+      "name": "Ici tout commence",
+      "vote_average": 6.664,
+      "vote_count": 61
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/skiuEBlxEC8qCk6nLR6fJvSM1JT.jpg",
+      "genre_ids": [
+        35,
+        18,
+        10751,
+        10762,
+        10759
+      ],
+      "id": 247885,
+      "origin_country": [
+        "MX",
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Papás por Conveniencia",
+      "overview": "Tino, a single father who faces great challenges in raising his two children, finds out one day that he is also the father of two rebellious teenagers, children of Aidé, a former high school classmate who has become an important businesswoman. For Tino, this news becomes an opportunity to take on the role of father of the children he never knew he had. Thus, he begins to work at Aidé's company, but everything gets complicated when Tino and his family move into Aidé's house to integrate into her new life. The house becomes a battlefield, both of their children have problems adapting, and love resurfaces between Tino and Aidé and a torrid romance begins. But building this new life for Aidé, Tino and their children will not be easy; they will have to face serious obstacles, always supported by the strength of their love and that of their children.",
+      "popularity": 3122.09,
+      "poster_path": "/y7yIu9PKx2WTphhYgbBq9C1RNzV.jpg",
+      "first_air_date": "2024-10-21",
+      "name": "Papás por Conveniencia",
+      "vote_average": 8.4,
+      "vote_count": 11
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/4i3iJepkqqH5JJgTNLJdi8ke6ir.jpg",
+      "genre_ids": [
+        10766
+      ],
+      "id": 249010,
+      "origin_country": [
+        "ZA"
+      ],
+      "original_language": "af",
+      "original_name": "Kelders van Geheime",
+      "overview": "Kelders van Geheime (Cellars of Secrets) is a South African, Afrikaans-language telenovela based on the wheeling's and dealings of the community that lives on Soebatskloof (a wine farm in the Cape). The series focuses on three families: the Abrahams, Syster and Marais households. These families will have to stand together, agree (or agree to disagree), and work together to earn their bread and butter – and a glass of wine.",
+      "popularity": 3022.73,
+      "poster_path": "/vf1I0G5jICTstI1EXxb9Oqq80TU.jpg",
+      "first_air_date": "2024-05-06",
+      "name": "Kelders van Geheime",
+      "vote_average": 6.4,
+      "vote_count": 7
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/mLcD1v4sfoa1juOsBat7Vik7wEe.jpg",
+      "genre_ids": [
+        10764
+      ],
+      "id": 248890,
+      "origin_country": [
+        "ZA"
+      ],
+      "original_language": "en",
+      "original_name": "Ready Steady Cook South Africa",
+      "overview": "In Ready Steady Cook, two teams - a Red Tomato and a Green Pepper - compete in a Red Kitchen and a Green Kitchen, together with a South African chef on each side and paired with enthusiastic home cooks, as they are challenged creatively with a mystery bag of ingredients in a 20-minute cook-off.",
+      "popularity": 3004.908,
+      "poster_path": "/30xX4IMbgnMbQwo76xM4BOSokZO.jpg",
+      "first_air_date": "2024-03-18",
+      "name": "Ready Steady Cook South Africa",
+      "vote_average": 2.1,
+      "vote_count": 4
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/7ZBNbpkLhC2fS90j6onLS8qqfRX.jpg",
+      "genre_ids": [],
+      "id": 4682,
+      "origin_country": [
+        "GB"
+      ],
+      "original_language": "en",
+      "original_name": "Strictly Come Dancing: It Takes Two",
+      "overview": "The companion show to the popular BBC One programme Strictly Come Dancing which features interviews and training footage of the couples competing in the main Saturday night show, opinions from the judges on the previous Saturday show and the training footage for the next, and interviews with celebrities who have been watching the show.",
+      "popularity": 2936.196,
+      "poster_path": "/1UOKLsJ3bopZHg6ntRfmO4C5Gcm.jpg",
+      "first_air_date": "2004-10-25",
+      "name": "Strictly Come Dancing: It Takes Two",
+      "vote_average": 3.8,
+      "vote_count": 5
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/jWXrQstj7p3Wl5MfYWY6IHqRpDb.jpg",
+      "genre_ids": [
+        10763
+      ],
+      "id": 94722,
+      "origin_country": [
+        "DE"
+      ],
+      "original_language": "de",
+      "original_name": "Tagesschau",
+      "overview": "German daily news program, the oldest still existing program on German television.",
+      "popularity": 2734.435,
+      "poster_path": "/7dFZJ2ZJJdcmkp05B9NWlqTJ5tq.jpg",
+      "first_air_date": "1952-12-26",
+      "name": "Tagesschau",
+      "vote_average": 6.7,
+      "vote_count": 213
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/u4Lh4viuwHGVLFyUnY7YvwOTwl0.jpg",
+      "genre_ids": [
+        18
+      ],
+      "id": 252373,
+      "origin_country": [
+        "PT"
+      ],
+      "original_language": "pt",
+      "original_name": "A Promessa",
+      "overview": "",
+      "popularity": 2680.878,
+      "poster_path": "/uptgxt2apx5wwWItQzqL0HwhjZC.jpg",
+      "first_air_date": "2024-06-18",
+      "name": "A Promessa",
+      "vote_average": 4.75,
+      "vote_count": 4
+    },
+    {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [
+        18,
+        35
+      ],
+      "id": 36361,
+      "origin_country": [
+        "CZ"
+      ],
+      "original_language": "cs",
+      "original_name": "Ulice",
+      "overview": "Ulice is a Czech soap opera produced and broadcast by Nova. In the Czech language Ulice means street.\n\nThe show describes the lives of the Farský, Jordán, Boháč, Nikl, and Liška families and many other people that live in Prague. Their daily battle against real problems of living in a modern world like divorce, love, betrayal and illness or disease. Ulice often shows crime.",
+      "popularity": 2549.647,
+      "poster_path": "/gFEHva8Csx18hMGJJZ6gi4sFSKR.jpg",
+      "first_air_date": "2005-09-05",
+      "name": "Ulice",
+      "vote_average": 3.6,
+      "vote_count": 21
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/93R3gd0iNqnib1JKwbWXksDcMY.jpg",
+      "genre_ids": [
+        35,
+        18,
+        10751
+      ],
+      "id": 255150,
+      "origin_country": [
+        "PE"
+      ],
+      "original_language": "es",
+      "original_name": "Pituca Sin Lucas",
+      "overview": "",
+      "popularity": 2474.519,
+      "poster_path": "/cjqJqODyUbul2GZL7ti2B5SVv7I.jpg",
+      "first_air_date": "2024-05-06",
+      "name": "Pituca Sin Lucas",
+      "vote_average": 8.5,
+      "vote_count": 2
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/mu3lEhGovyhKHPJzb7HNYtZUCDT.jpg",
+      "genre_ids": [
+        10766
+      ],
+      "id": 206559,
+      "origin_country": [
+        "ZA"
+      ],
+      "original_language": "af",
+      "original_name": "Binnelanders",
+      "overview": "A South African Afrikaans soap opera. It is set in and around the fictional private hospital, Binneland Kliniek, in Pretoria, and the storyline follows the trials, trauma and tribulations of the staff and patients of the hospital.",
+      "popularity": 2468.432,
+      "poster_path": "/3bzECfllho8PphdYujLUIuhncJD.jpg",
+      "first_air_date": "2005-10-13",
+      "name": "Binnelanders",
+      "vote_average": 5.5,
+      "vote_count": 71
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/zk3UqXnnK7cpUv6LsD9DS8FtUxb.jpg",
+      "genre_ids": [
+        18,
+        10759
+      ],
+      "id": 256121,
+      "origin_country": [
+        "PH"
+      ],
+      "original_language": "tl",
+      "original_name": "Lavender Fields",
+      "overview": "Jasmin loved her idyllic life in her mountain town, but a brush with a criminal empire took it all away. Now she's out for revenge with a new identity.",
+      "popularity": 2427.49,
+      "poster_path": "/lphvsr062SlxWM6XegsV2dLGaiE.jpg",
+      "first_air_date": "2024-09-02",
+      "name": "Lavender Fields",
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/kvQE5pvZZWCIQ0uAQvzRmQO3nZM.jpg",
+      "genre_ids": [
+        10764
+      ],
+      "id": 231344,
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "es",
+      "original_name": "Los 50",
+      "overview": "Fifty TV stars are single handedly picked by a mysterious, masked Lion to participate in a competition like no other. Living together in an exotic country mansion and competing against each other in a relentless and unpredictable game, the stars must face challenges posed by the game master while making alliances and developing strategies to avoid elimination.",
+      "popularity": 2406.041,
+      "poster_path": "/5u4lYLk0kDf6XTUIENhXkaUV2jQ.jpg",
+      "first_air_date": "2023-07-18",
+      "name": "Los 50",
+      "vote_average": 7.6,
+      "vote_count": 17
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/j5CR0gFPjwgmAXkV9HGaF4VMjIW.jpg",
+      "genre_ids": [
+        10766,
+        18,
+        35
+      ],
+      "id": 257064,
+      "origin_country": [
+        "BR"
+      ],
+      "original_language": "pt",
+      "original_name": "Volta por Cima",
+      "overview": "",
+      "popularity": 2385.686,
+      "poster_path": "/nyN8R0P1Hqwq7ksJz4O2BIAUd4W.jpg",
+      "first_air_date": "2024-09-30",
+      "name": "Volta por Cima",
+      "vote_average": 5.3,
+      "vote_count": 3
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/i8iqYtAy9qcO5RSrA1f6fY1n6SN.jpg",
+      "genre_ids": [
+        10766
+      ],
+      "id": 235484,
+      "origin_country": [
+        "ZA"
+      ],
+      "original_language": "af",
+      "original_name": "Suidooster",
+      "overview": "Suidooster is a South African television soap opera produced by Suidooster Films which revolves around a matriarch, her family, friends and the people of Suidooster, a small shopping and business centre in the fictional Cape Town suburb of Ruiterbosch.",
+      "popularity": 2255.756,
+      "poster_path": "/naCgSiacvV685kait6fBvhVhdce.jpg",
+      "first_air_date": "2015-11-16",
+      "name": "Suidooster",
+      "vote_average": 7.6,
+      "vote_count": 16
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/zUBbIcKnzw5MZqfc6Q8rlRdC6zX.jpg",
+      "genre_ids": [
+        10762,
+        10751
+      ],
+      "id": 38715,
+      "origin_country": [
+        "NL"
+      ],
+      "original_language": "nl",
+      "original_name": "Sinterklaasjournaal",
+      "overview": "",
+      "popularity": 2185.676,
+      "poster_path": "/thOkUNMen2b4KJKeH2k02jNCcI2.jpg",
+      "first_air_date": "2001-01-01",
+      "name": "Sinterklaasjournaal",
+      "vote_average": 7.7,
+      "vote_count": 3
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/6SJyjMAPsRHr4MCXiHQYT2EWwuu.jpg",
+      "genre_ids": [
+        18
+      ],
+      "id": 240440,
+      "origin_country": [
+        "CN"
+      ],
+      "original_language": "zh",
+      "original_name": "珠帘玉幕",
+      "overview": "After narrowly escaping an abusive pearl farm, a young woman with unmatched talent carves out her own fate as treachery meets the world of jewelry.",
+      "popularity": 2182.616,
+      "poster_path": "/rggdEAQkad1SFGJUg48tlhjWSXa.jpg",
+      "first_air_date": "2024-11-01",
+      "name": "The Story of Pearl Girl",
+      "vote_average": 9,
+      "vote_count": 1
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/h0y3OzHzG4yNvn8u3Za6ByH8lrQ.jpg",
+      "genre_ids": [
+        18,
+        10766
+      ],
+      "id": 45789,
+      "origin_country": [
+        "DE"
+      ],
+      "original_language": "de",
+      "original_name": "Sturm der Liebe",
+      "overview": "These are the stories of relationships taking place in the fictional five-star hotel Fürstenhof, located in Feldkirchen-Westerham near Rosenheim with the plot revolving around members of the family room area, the hotel owners, and employees.",
+      "popularity": 2165.205,
+      "poster_path": "/jfFNydakwvbeACEwSd2Gh8UWtba.jpg",
+      "first_air_date": "2005-09-26",
+      "name": "Sturm der Liebe",
+      "vote_average": 5.7,
+      "vote_count": 31
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/kkfqNkGQR5og5sDjJTxTVmI9PW.jpg",
+      "genre_ids": [
+        80,
+        18
+      ],
+      "id": 72879,
+      "origin_country": [
+        "FR"
+      ],
+      "original_language": "fr",
+      "original_name": "Demain nous appartient",
+      "overview": "The story revolves around the people of Sète, France. Their lives are punctuated by family rivalries, romance and scenes from daily life, but also by plots involving police investigations, secrets and betrayals.",
+      "popularity": 2147.824,
+      "poster_path": "/zMWldNZF0wS3L5XkDVFHxYhclcL.jpg",
+      "first_air_date": "2017-07-17",
+      "name": "Tomorrow Is Ours",
+      "vote_average": 6.2,
+      "vote_count": 61
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/2Bkqjc9tNWo3KLr1aRYyJ7vMQtM.jpg",
+      "genre_ids": [
+        10764
+      ],
+      "id": 235493,
+      "origin_country": [
+        "NL"
+      ],
+      "original_language": "nl",
+      "original_name": "De Bondgenoten",
+      "overview": "",
+      "popularity": 2146.743,
+      "poster_path": "/wsipinibYxrZhpkQ6MKxIMgL0hv.jpg",
+      "first_air_date": "2023-10-22",
+      "name": "De Bondgenoten",
+      "vote_average": 6.7,
+      "vote_count": 19
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/sCTlziZeyf4eWXh09pt63zMtJRw.jpg",
+      "genre_ids": [
+        10759,
+        18
+      ],
+      "id": 261033,
+      "origin_country": [
+        "SY"
+      ],
+      "original_language": "ar",
+      "original_name": "العميل",
+      "overview": "A police captain infiltrates a notorious gang, only to find himself going deeper down the rabbit hole.",
+      "popularity": 2139.785,
+      "poster_path": "/qUtgaa43jTELs0Tdw55aIukt9yn.jpg",
+      "first_air_date": "2024-08-18",
+      "name": "The Agent",
+      "vote_average": 1.8,
+      "vote_count": 2
+    }
+  ],
+  "total_pages": 9308,
+  "total_results": 186156
+}

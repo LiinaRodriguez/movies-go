@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import { getMovies } from "../api/movieApi";
-import { truncateDescription } from "../utils/utils";
+
 import { Movie } from "../types/types";
+import { CustomDropdown } from "../components/Dropdown";
 const Explore: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState("All");
 
+  
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        setError(null); 
-        const response = await getMovies();
+        setError(null);
+
+        // Llamada a la API con el valor seleccionado como filtro
+        const response = await getMovies(selectedOption);
 
         if (response && Array.isArray(response.data)) {
           setMovies(response.data);
@@ -26,42 +31,42 @@ const Explore: React.FC = () => {
         setError("Error al cargar las películas. Intenta nuevamente más tarde.");
       } finally {
         setLoading(false);
-        console.log("Movies", movies)
       }
     };
 
     fetchMovies();
-    console.log("Movies", movies)
-  }, );
-
-  if (loading) {
-    return <div>Loading movies...</div>;
-  }
-
-  if (error) {
-    return <div className="text-red-500">{error}</div>;
-  }
-
-  if (movies.length === 0) {
-    return <div>No movies found</div>;
-  }
+  }, [selectedOption]);
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 p-4">
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          id={movie.id}
-          title={movie.title}
-          year={movie.release_date}
-          rating={movie.rating}
-          description={truncateDescription(movie.overview)}
-          image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          genres={["Action", "Triller"]}
-        />
-      ))}
+    <div className="p-4">
+      {/* Dropdown siempre visible 
+      <CustomDropdown
+        selected={selectedOption}
+        onSelect={setSelectedOption}
+      />*/}
+
+      {/* Contenido según el estado */}
+      {loading && <div>Loading movies...</div>}
+      {error && <div className="text-red-500">{error}</div>}
+      {!loading && !error && movies.length === 0 && <div>No movies found</div>}
+      
+      <div className="flex flex-wrap justify-center gap-4 mt-4">
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            id={movie.id}
+            title={movie.title}
+            release_date={movie.release_date}
+            rating={movie.rating}
+            overview={movie.overview}
+            poster_path={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            genres={["Action", "Thriller"]}
+          />
+        ))}
+      </div>
     </div>
   );
 };
+
 
 export default Explore;
