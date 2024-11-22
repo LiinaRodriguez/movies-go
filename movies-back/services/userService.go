@@ -24,7 +24,7 @@ func NewUserService(userRepo repositories.UserRepository, movieService MovieServ
 
 func (s *userService) GetFavorites(userid int) ([]api.Media, error) {
 
-	favorites, err := s.userRepo.FindFavoritesByUserId(userid)
+	favorites, err := s.movieService.GetFavoriteMovies(userid)
 	if err != nil {
 		fmt.Println(err)
 		return nil, err
@@ -63,12 +63,12 @@ func (s *userService) RecommendFromTheMatrix(userid int) ([]api.Media, error) {
 
 	return favoritesmedia, nil
 }
+
 func (s *userService) GetRatedMoviesByUserId(userid int, page int, pageSize int) ([]api.Media, error) {
-	// Calcular offset
+
 	offset := (page - 1) * pageSize
 
-	// Llamar al repositorio con paginación
-	ratedmovies, err := s.userRepo.GetRatedMoviesByUserIdWithPagination(userid, pageSize, offset)
+	ratedmovies, err := s.movieService.GetRatedMoviesByUserIdWithPagination(userid, offset, pageSize)
 	if err != nil {
 		fmt.Println(err)
 		return nil, err
@@ -76,7 +76,6 @@ func (s *userService) GetRatedMoviesByUserId(userid int, page int, pageSize int)
 
 	var moviesmedia []api.Media
 	for _, ratedmovie := range ratedmovies {
-		// Obtener los detalles de la película por su ID
 		media, err := s.movieService.GetMovieById(ratedmovie.MovieId)
 		if err != nil {
 			fmt.Printf("Error fetching movie with ID %s: %v\n", ratedmovie.MovieId, err)
