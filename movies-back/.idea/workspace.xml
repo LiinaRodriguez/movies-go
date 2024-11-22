@@ -6,6 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="890d165f-8570-4705-89f0-debf82a34593" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/authController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/authController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/movieController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/movieController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/userController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/userController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/authService.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/authService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/api/movieApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/api/movieApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/components/Dropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/components/Dropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/components/MovieCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/components/MovieCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../movies-frontend/src/pages/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../movies-frontend/src/pages/auth/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +73,8 @@
     "last_opened_file_path": "C:/Users/linnr",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.scopes"
   }
 }]]></component>
   <component name="RunManager">

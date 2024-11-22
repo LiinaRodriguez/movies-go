@@ -6,6 +6,7 @@ import (
 	"github.com/liinarodriguez/movies-go/movies-back/services"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 type AuthController struct {
@@ -23,7 +24,7 @@ func (c *AuthController) Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	token, err := c.authService.Login(creds.Email, creds.Password)
+	user, err := c.authService.Login(creds.Email, creds.Password)
 	if err != nil {
 		w.WriteHeader(http.StatusUnauthorized)
 		w.Write([]byte(err.Error()))
@@ -31,7 +32,9 @@ func (c *AuthController) Login(w http.ResponseWriter, r *http.Request) {
 	}
 	response := map[string]interface{}{
 		"data": map[string]string{
-			"token": token,
+			"token":   user.Token,
+			"user":    user.Email,
+			"user_id": strconv.Itoa(user.ID),
 		},
 	}
 	w.Header().Set("Content-Type", "application/json")

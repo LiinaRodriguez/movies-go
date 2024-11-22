@@ -78,9 +78,12 @@ func (c *UserController) GetRecommendations(w http.ResponseWriter, r *http.Reque
 		http.Error(w, "Error fetching favorites", http.StatusInternalServerError)
 		return
 	}
+	response := map[string]interface{}{
+		"data": movies,
+	}
 
 	w.Header().Set("Content-Type", "application/json")
-	if err := json.NewEncoder(w).Encode(movies); err != nil {
+	if err := json.NewEncoder(w).Encode(response); err != nil {
 		http.Error(w, "Error encoding response", http.StatusInternalServerError)
 		return
 	}

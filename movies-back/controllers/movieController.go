@@ -45,7 +45,9 @@ func (c *MovieController) FindMovie(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	response := map[string]interface{}{
+		"data": movies,
+	}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(movies)
-	fmt.Println(json.NewEncoder(w).Encode(movies))
+	json.NewEncoder(w).Encode(response)
 }
